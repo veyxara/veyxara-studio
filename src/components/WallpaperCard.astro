@@ -35,12 +35,27 @@ const isPinterest =
 const isLocalPC = !isBrand && !isPinterest;
 
 const targetUrl = wallpaper.pinterestUrl || wallpaper.image;
+
+const cardColors = {
+  cardSurface: 'bg-[#EED9B5]',
+  warmChip: 'bg-[#FAF6EE]',
+  warmChipHover: 'hover:bg-[#FFFDF9]',
+  pageBg: 'bg-[#FAF6EE]',
+  inkPrimary: 'text-[#1C1917]',
+  inkSecondary: 'text-[#44403C]',
+  accentStrong: 'text-[#B45309]',
+  accentDeep: 'text-[#92400E]',
+  accentBg: 'bg-[#B45309]',
+  accentBgHover: 'hover:bg-[#92400E]',
+  borderLight: 'border-[#B45309]/25',
+  borderMedium: 'border-[#B45309]/55',
+};
 ---
 
 <div class="wallpaper-card group">
   <div class="card-media-wrapper cursor-pointer preview-trigger" data-modal-target={uniqueModalId}>
-    <img 
-      src={wallpaper.image} 
+    <img
+      src={wallpaper.image}
       alt={wallpaper.title}
       loading="lazy"
       decoding="async"
@@ -49,13 +64,27 @@ const targetUrl = wallpaper.pinterestUrl || wallpaper.image;
         isVertical ? 'object-cover object-top group-hover:object-bottom' : 'object-cover object-center'
       }`}
     />
-    
-    <span class="absolute top-3 right-3 bg-[#FFFDF9]/95 border border-[#A16207]/50 text-[#713F12] text-[10px] font-mono font-bold px-2 py-1 rounded-md shadow-xs z-10 whitespace-nowrap">
+
+    <span
+      class:list={[
+        'absolute top-3 right-3 border text-[10px] font-mono font-bold px-2 py-1 rounded-md shadow-xs z-10 whitespace-nowrap',
+        cardColors.pageBg,
+        cardColors.borderMedium,
+        cardColors.accentDeep,
+      ]}
+    >
       {wallpaper.resolution}
     </span>
 
-    <div class="absolute inset-0 bg-[#18181B]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
-      <span class="bg-[#EAB308] text-[#18181B] text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 shadow-lg whitespace-nowrap">
+    <div
+      class="absolute inset-0 bg-[#1C1917]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2"
+    >
+      <span
+        class:list={[
+          'text-[#FFFDF9] text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 shadow-lg whitespace-nowrap',
+          cardColors.accentBg,
+        ]}
+      >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
           <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -65,31 +94,49 @@ const targetUrl = wallpaper.pinterestUrl || wallpaper.image;
     </div>
   </div>
 
-  <div class="p-5 flex flex-col justify-between flex-grow bg-[#FFFDF9]">
+  <div class:list={['p-5 flex flex-col justify-between flex-grow', cardColors.cardSurface]}>
     <div>
-      <span class="text-xs font-mono font-bold text-[#B45309] uppercase tracking-wider">
+      <span class:list={['text-xs font-mono font-bold uppercase tracking-wider', cardColors.accentStrong]}>
         CATEGORÍA: {wallpaper.category}
       </span>
-      <h3 class="text-base font-bold text-[#18181B] mt-1 group-hover:text-[#B45309] transition-colors">
+      <h3
+        class:list={[
+          'text-base font-bold mt-1 group-hover:text-[#B45309] transition-colors',
+          cardColors.inkPrimary,
+        ]}
+      >
         {wallpaper.title}
       </h3>
     </div>
 
-    <div class="mt-6 pt-4 border-t border-[#A16207]/15 flex items-center justify-between gap-2">
-      <button 
+    <div
+      class:list={[
+        'mt-6 pt-4 border-t flex flex-wrap items-center justify-between gap-2',
+        cardColors.borderLight,
+      ]}
+    >
+      <button
         type="button"
-        class="preview-trigger text-xs text-[#3F3F46] hover:text-[#B45309] font-mono font-semibold transition-colors flex items-center gap-1 cursor-pointer whitespace-nowrap shrink-0"
+        class:list={[
+          'preview-trigger text-xs hover:text-[#B45309] font-mono font-semibold transition-colors flex items-center gap-1 cursor-pointer whitespace-nowrap',
+          cardColors.inkSecondary,
+        ]}
         data-modal-target={uniqueModalId}
       >
         <span>🔍 Ampliar Arte</span>
       </button>
 
       {isPinterest && (
-        <a 
+        <a
           href={targetUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FEF08A]/75 border border-[#A16207]/45 text-[#713F12] text-xs font-bold hover:bg-[#EAB308] hover:text-[#18181B] transition-all cursor-pointer shadow-xs whitespace-nowrap shrink-0"
+          class:list={[
+            'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-bold hover:bg-[#B45309] hover:text-[#FFFDF9] transition-all cursor-pointer shadow-xs whitespace-nowrap',
+            cardColors.warmChip,
+            cardColors.borderMedium,
+            cardColors.accentDeep,
+          ]}
         >
           <span>Ir a Pinterest</span>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -99,9 +146,13 @@ const targetUrl = wallpaper.pinterestUrl || wallpaper.image;
       )}
 
       {isLocalPC && (
-        <button 
+        <button
           type="button"
-          class="download-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#EAB308] text-[#18181B] text-xs font-bold hover:bg-[#D97706] hover:text-white transition-all cursor-pointer shadow-xs whitespace-nowrap shrink-0"
+          class:list={[
+            'download-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[#FFFDF9] text-xs font-bold transition-all cursor-pointer shadow-xs whitespace-nowrap',
+            cardColors.accentBg,
+            cardColors.accentBgHover,
+          ]}
           data-image={wallpaper.downloadUrl || wallpaper.image}
           data-title={wallpaper.title}
         >
@@ -113,71 +164,100 @@ const targetUrl = wallpaper.pinterestUrl || wallpaper.image;
       )}
 
       {isBrand && (
-        <span class="text-xs font-mono text-[#713F12] font-semibold italic whitespace-nowrap shrink-0">
-          Uso de Marca · Solo Vista
+        <span class:list={['text-xs font-mono font-semibold italic whitespace-nowrap', cardColors.accentDeep]}>
+          Solo marca
         </span>
       )}
     </div>
   </div>
 
-  <dialog id={uniqueModalId} class="wallpaper-modal p-0 rounded-2xl bg-transparent backdrop:bg-[#05070A]/95 backdrop:backdrop-blur-md w-full max-w-7xl">
-    <div class="relative w-full h-[95vh] bg-[#05070A] border-2 border-zinc-800 rounded-2xl p-4 md:p-6 overflow-hidden flex flex-col items-center text-[#E8EEF5]">
-      
-      <div class="w-full flex items-center justify-between mb-3 pb-2 border-b border-zinc-800 shrink-0">
+  <dialog id={uniqueModalId} class="wallpaper-modal p-0 rounded-2xl bg-transparent w-full max-w-7xl">
+    <div
+      class:list={[
+        'relative w-full h-[95vh] border rounded-2xl p-4 md:p-6 overflow-hidden flex flex-col items-center shadow-2xl',
+        cardColors.cardSurface,
+        cardColors.borderMedium,
+        cardColors.inkPrimary,
+      ]}
+    >
+      <div class:list={['w-full flex items-center justify-between mb-3 pb-2 border-b shrink-0', cardColors.borderLight]}>
         <div>
-          <h3 class="text-base md:text-lg font-bold text-[#E8EEF5]">{wallpaper.title}</h3>
-          <span class="text-xs font-mono text-[#FF9900]">{wallpaper.resolution} • {wallpaper.category}</span>
+          <h3 class:list={['text-base md:text-lg font-bold', cardColors.inkPrimary]}>{wallpaper.title}</h3>
+          <span class:list={['text-xs font-mono font-semibold', cardColors.accentStrong]}>
+            {wallpaper.resolution} • {wallpaper.category}
+          </span>
         </div>
-        
+
         <form method="dialog">
-          <button class="px-3 py-1.5 text-zinc-300 hover:text-white bg-[#0F131A] border border-zinc-800 rounded-lg transition-colors cursor-pointer text-sm font-bold">
+          <button
+            class:list={[
+              'px-3 py-1.5 hover:text-[#1C1917] border rounded-lg transition-colors cursor-pointer text-sm font-bold whitespace-nowrap shrink-0',
+              cardColors.warmChip,
+              cardColors.borderMedium,
+              cardColors.inkSecondary,
+            ]}
+          >
             ✕ Cerrar
           </button>
         </form>
       </div>
 
-      <div class="relative overflow-auto flex-grow w-full flex items-center justify-center bg-black/80 rounded-xl p-2 border border-zinc-800">
-        <img 
-          data-src={wallpaper.image} 
-          alt={wallpaper.title} 
+      <div
+        class:list={[
+          'relative overflow-auto flex-grow w-full flex items-center justify-center rounded-xl p-2 border',
+          cardColors.pageBg,
+          cardColors.borderLight,
+        ]}
+      >
+        <img
+          data-src={wallpaper.image}
+          alt={wallpaper.title}
           loading="lazy"
           oncontextmenu={isBrand ? 'return false;' : undefined}
-          class={`modal-img max-h-[80vh] max-w-full w-auto h-auto object-contain rounded-lg shadow-2xl ${isBrand ? 'select-none pointer-events-none' : ''}`}
+          class={`modal-img max-h-[80vh] max-w-full w-auto h-auto object-contain rounded-lg shadow-md ${isBrand ? 'select-none pointer-events-none' : ''}`}
         />
       </div>
 
-      <div class="w-full mt-3 pt-2 border-t border-zinc-800 flex items-center justify-between shrink-0">
-        <span class="text-xs text-zinc-400 font-mono">
+      <div class:list={['w-full mt-3 pt-2 border-t flex items-center justify-between gap-4 shrink-0', cardColors.borderLight]}>
+        <span class:list={['text-xs font-mono', cardColors.inkSecondary]}>
           {isPinterest
             ? 'Repositorio externo: Encuentra este diseño en nuestro tablero oficial de Veyxara Studio en Pinterest.'
             : isBrand
               ? 'Activo de identidad de marca protegido (descarga deshabilitada).'
               : `Optimizado para ${wallpaper.resolution}.`}
         </span>
-        
+
         {isPinterest && (
-          <a 
+          <a
             href={targetUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="px-5 py-2 rounded-xl bg-[#FF9900] text-[#05070A] font-bold text-sm hover:bg-amber-400 transition-all flex items-center gap-2 cursor-pointer shadow-md"
+            class:list={[
+              'px-5 py-2 rounded-xl text-[#FFFDF9] font-bold text-sm transition-all flex items-center gap-2 cursor-pointer shadow-sm whitespace-nowrap shrink-0',
+              cardColors.accentBg,
+              cardColors.accentBgHover,
+            ]}
           >
             <span>Ir a Pinterest</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
           </a>
         )}
 
         {isLocalPC && (
-          <button 
+          <button
             type="button"
-            class="download-btn px-5 py-2 rounded-xl bg-[#FF9900] text-[#05070A] font-bold text-sm hover:bg-amber-400 transition-all flex items-center gap-2 cursor-pointer shadow-md"
+            class:list={[
+              'download-btn px-5 py-2 rounded-xl text-[#FFFDF9] font-bold text-sm transition-all flex items-center gap-2 cursor-pointer shadow-sm whitespace-nowrap shrink-0',
+              cardColors.accentBg,
+              cardColors.accentBgHover,
+            ]}
             data-image={wallpaper.downloadUrl || wallpaper.image}
             data-title={wallpaper.title}
           >
             <span>Descargar en Alta Resolución (JPG)</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
           </button>
@@ -185,13 +265,20 @@ const targetUrl = wallpaper.pinterestUrl || wallpaper.image;
 
         {isBrand && (
           <form method="dialog">
-            <button class="px-4 py-2 rounded-xl bg-zinc-800 text-zinc-300 font-bold text-sm hover:bg-zinc-700 transition-all cursor-pointer">
+            <button
+              class:list={[
+                'px-4 py-2 rounded-xl border font-bold text-sm transition-all cursor-pointer whitespace-nowrap shrink-0',
+                cardColors.warmChip,
+                cardColors.warmChipHover,
+                cardColors.borderMedium,
+                cardColors.accentDeep,
+              ]}
+            >
               Cerrar Vista Previa
             </button>
           </form>
         )}
       </div>
-
     </div>
   </dialog>
 </div>
@@ -227,6 +314,10 @@ const targetUrl = wallpaper.pinterestUrl || wallpaper.image;
 
         if (!imageSrc) return;
 
+        const safeName = wallpaperTitle
+          ? wallpaperTitle.toLowerCase().replace(/[^a-z0-9]/g, '-')
+          : 'veyxara-wallpaper';
+
         try {
           const img = new Image();
           img.crossOrigin = 'anonymous';
@@ -241,16 +332,13 @@ const targetUrl = wallpaper.pinterestUrl || wallpaper.image;
           canvas.width = img.naturalWidth;
           canvas.height = img.naturalHeight;
           const ctx = canvas.getContext('2d');
-          
+
           if (ctx) {
             ctx.drawImage(img, 0, 0);
             const dataUrl = canvas.toDataURL('image/jpeg', 0.95);
-            
+
             const link = document.createElement('a');
             link.href = dataUrl;
-            const safeName = wallpaperTitle
-              ? wallpaperTitle.toLowerCase().replace(/[^a-z0-9]/g, '-')
-              : 'veyxara-wallpaper';
             link.download = `${safeName}.jpg`;
             document.body.appendChild(link);
             link.click();
@@ -259,8 +347,10 @@ const targetUrl = wallpaper.pinterestUrl || wallpaper.image;
         } catch {
           const fallbackLink = document.createElement('a');
           fallbackLink.href = imageSrc;
-          fallbackLink.download = 'wallpaper.jpg';
+          fallbackLink.download = `${safeName}.jpg`;
+          document.body.appendChild(fallbackLink);
           fallbackLink.click();
+          document.body.removeChild(fallbackLink);
         }
       });
     });
@@ -272,24 +362,25 @@ const targetUrl = wallpaper.pinterestUrl || wallpaper.image;
 
 <style>
   .wallpaper-card {
-    background-color: #FFFDF9;
-    border: 1px solid rgba(161, 98, 7, 0.32);
+    background-color: #EED9B5;
+    border: 1px solid rgba(180, 83, 9, 0.45);
     border-radius: 16px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 2px 8px -2px rgba(180, 83, 9, 0.12);
     transition: all 0.25s ease-in-out;
   }
   .card-media-wrapper {
     position: relative;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background-color: #EFE3C8;
+    background-color: #E4C99E;
   }
   .wallpaper-card:hover {
-    border-color: rgba(217, 119, 6, 0.85);
+    border-color: rgba(180, 83, 9, 0.85);
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px -6px rgba(161, 98, 7, 0.18);
+    box-shadow: 0 12px 24px -6px rgba(180, 83, 9, 0.2);
   }
   body:has(dialog.wallpaper-modal[open]) {
     overflow: hidden;
@@ -304,7 +395,7 @@ const targetUrl = wallpaper.pinterestUrl || wallpaper.image;
     flex-direction: column;
   }
   dialog.wallpaper-modal::backdrop {
-    background: rgba(5, 7, 10, 0.85);
+    background: rgba(28, 25, 23, 0.65);
     backdrop-filter: blur(8px);
     position: fixed;
     inset: 0;

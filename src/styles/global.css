@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@theme {
+  --color-studio-bg: #FAF6EE;
+  --color-studio-surface: #F3E8D2;
+  --color-studio-surface-footer: #EFE3C8;
+  --color-studio-card: #FFFDF9;
+  --color-studio-border: #DECBA9;
+  --color-studio-ink: #1C1917;
+  --color-studio-ink-muted: #44403C;
+  --color-studio-accent: #B45309;
+  --color-studio-accent-soft: #92400E;
+
+  --font-display: "Orbitron", sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+}

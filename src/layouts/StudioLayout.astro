@@ -11,6 +11,21 @@ const {
   title = 'Veyxara Studio — Arte Digital, Wallpapers & Colecciones Visuales',
   description = 'Vitrina creativa de arte digital, fondos de pantalla en alta definición y colecciones visuales.',
 } = Astro.props;
+
+const studioTheme = {
+  pageBg: 'bg-[#FAF6EE]',
+  headerBg: 'bg-[#F3E8D2]/95',
+  footerBg: 'bg-[#EFE3C8]',
+  surfaceElevated: 'bg-[#FFFDF9]',
+  pillBg: 'bg-[#EAD9B7]/80',
+  borderWarm: 'border-[#B45309]/25',
+  borderPill: 'border-[#B45309]/35',
+  borderAction: 'border-[#B45309]/45',
+  textPrimary: 'text-[#1C1917]',
+  textSecondary: 'text-[#44403C]',
+  accentAmber: 'text-[#B45309]',
+  badgeText: 'text-[#78350F]',
+};
 ---
 
 <!doctype html>
@@ -20,6 +35,8 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+    <link rel="shortcut icon" href="/favicon.svg?v=2" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,32 +45,63 @@ const {
     />
   </head>
   <body
-    class="min-h-screen bg-[#FAF6EE] text-[#18181B] antialiased selection:bg-[#EAB308]/30 selection:text-[#18181B]"
-    style="background-color: #FAF6EE; color: #18181B; font-family: 'Plus Jakarta Sans', system-ui, sans-serif;"
+    class:list={[
+      'min-h-screen antialiased selection:bg-[#B45309]/20 selection:text-[#1C1917]',
+      studioTheme.pageBg,
+      studioTheme.textPrimary,
+    ]}
+    style="font-family: 'Plus Jakarta Sans', system-ui, sans-serif;"
   >
-    <header class="sticky top-0 z-40 border-b border-[#B45309]/20 bg-[#F3E8D2]/95 backdrop-blur-md">
+    <header
+      class:list={[
+        'sticky top-0 z-40 border-b backdrop-blur-md',
+        studioTheme.headerBg,
+        studioTheme.borderWarm,
+      ]}
+    >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
         <a href="/" class="flex items-center gap-2.5 group shrink-0">
           <span
-            class="text-lg sm:text-xl font-extrabold tracking-wider text-[#18181B] group-hover:text-[#B45309] transition-colors whitespace-nowrap"
+            class:list={[
+              'text-lg sm:text-xl font-extrabold tracking-wider transition-colors whitespace-nowrap group-hover:text-[#B45309]',
+              studioTheme.textPrimary,
+            ]}
             style="font-family: 'Orbitron', sans-serif;"
           >
-            VEYXARA <span class="text-[#D97706]">STUDIO</span>
+            VEYXARA <span class={studioTheme.accentAmber}>STUDIO</span>
           </span>
-          <span class="hidden sm:inline-block text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-[#FEF08A]/70 border border-[#A16207]/40 text-[#713F12] whitespace-nowrap">
+          <span
+            class:list={[
+              'hidden sm:inline-block text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded-full border whitespace-nowrap',
+              studioTheme.pillBg,
+              studioTheme.borderPill,
+              studioTheme.badgeText,
+            ]}
+          >
             Visual Gallery
           </span>
         </a>
 
         <nav class="flex items-center gap-4 text-xs sm:text-sm shrink-0">
-          <a href="#colecciones" class="font-semibold text-[#27272A] hover:text-[#B45309] transition-colors whitespace-nowrap">
+          <a
+            href="#colecciones"
+            class:list={[
+              'font-semibold transition-colors whitespace-nowrap hover:text-[#B45309]',
+              studioTheme.textSecondary,
+            ]}
+          >
             Colecciones
           </a>
           <a
             href="https://veyxara.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="px-3 py-1.5 rounded-lg bg-[#FFFDF9] border border-[#CA8A04]/50 text-[#713F12] font-bold hover:bg-[#FACC15] hover:text-[#18181B] transition-colors whitespace-nowrap"
+            class:list={[
+              'px-3 py-1.5 rounded-lg border font-bold transition-colors whitespace-nowrap hover:bg-[#E6D2AE] hover:text-[#1C1917]',
+              studioTheme.surfaceElevated,
+              studioTheme.borderAction,
+              studioTheme.badgeText,
+            ]}
           >
             Veyxara Core ↗
           </a>
@@ -63,16 +111,40 @@ const {
 
     <slot />
 
-    <footer class="border-t border-[#B45309]/20 bg-[#EFE3C8] py-8 mt-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#3F3F46]">
+    <footer
+      class:list={[
+        'border-t py-8 mt-20',
+        studioTheme.footerBg,
+        studioTheme.borderWarm,
+      ]}
+    >
+      <div
+        class:list={[
+          'max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs',
+          studioTheme.textSecondary,
+        ]}
+      >
         <p>
-          <strong class="text-[#18181B]" style="font-family: 'Orbitron', sans-serif;">VEYXARA STUDIO</strong> · Arte digital, wallpapers y piezas visuales.
+          <strong class={studioTheme.textPrimary} style="font-family: 'Orbitron', sans-serif;">
+            VEYXARA STUDIO
+          </strong>{' '}
+          · Arte digital, wallpapers y piezas visuales.
         </p>
         <div class="flex items-center gap-5">
-          <a href="https://www.pinterest.com/arevaloalfredo69/" target="_blank" rel="noopener noreferrer" class="font-semibold hover:text-[#B45309] transition-colors">
+          <a
+            href="https://www.pinterest.com/arevaloalfredo69/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-semibold hover:text-[#B45309] transition-colors"
+          >
             Pinterest
           </a>
-          <a href="https://veyxara.com" target="_blank" rel="noopener noreferrer" class="font-semibold hover:text-[#B45309] transition-colors">
+          <a
+            href="https://veyxara.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-semibold hover:text-[#B45309] transition-colors"
+          >
             Portal Técnico (Core)
           </a>
         </div>
