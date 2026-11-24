@@ -1,0 +1,80 @@
+---
+// src/layouts/StudioLayout.astro
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Veyxara Studio — Arte Digital, Wallpapers & Colecciones Visuales',
+  description = 'Vitrina creativa de arte digital, fondos de pantalla en alta definición y colecciones visuales.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="min-h-screen bg-[#040914] text-[#E8EEF5] antialiased selection:bg-[#FF9900]/30 selection:text-[#E8EEF5]"
+    style="font-family: 'Plus Jakarta Sans', system-ui, sans-serif;"
+  >
+    <header class="sticky top-0 z-40 border-b border-[#00CFFF]/20 bg-[#040914]/85 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2.5 group">
+          <span
+            class="text-lg sm:text-xl font-extrabold tracking-wider text-[#E8EEF5] group-hover:text-[#00CFFF] transition-colors"
+            style="font-family: 'Orbitron', sans-serif;"
+          >
+            VEYXARA <span class="text-[#FF9900]">STUDIO</span>
+          </span>
+          <span class="hidden sm:inline-block text-[10px] font-mono uppercase px-2 py-0.5 rounded-full border border-[#D4AF37]/50 text-[#D4AF37]">
+            Visual Gallery
+          </span>
+        </a>
+
+        <nav class="flex items-center gap-4 text-xs sm:text-sm">
+          <a href="#colecciones" class="text-[#E8EEF5]/85 hover:text-[#FF9900] transition-colors">
+            Colecciones
+          </a>
+          <a
+            href="https://veyxara.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-3 py-1.5 rounded-lg border border-[#00CFFF]/40 text-[#00CFFF] hover:bg-[#00CFFF]/10 transition-colors"
+          >
+            Veyxara Core ↗
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <slot />
+
+    <footer class="border-t border-white/10 bg-[#071426] py-8 mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#E8EEF5]/70">
+        <p>
+          <strong class="text-[#D4AF37]" style="font-family: 'Orbitron', sans-serif;">VEYXARA STUDIO</strong> · Arte digital, wallpapers y piezas visuales.
+        </p>
+        <div class="flex items-center gap-5">
+          <a href="https://www.pinterest.com/arevaloalfredo69/" target="_blank" rel="noopener noreferrer" class="hover:text-[#FF9900] transition-colors">
+            Pinterest
+          </a>
+          <a href="https://veyxara.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#00CFFF] transition-colors">
+            Portal Técnico (Core)
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

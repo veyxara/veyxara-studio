@@ -1,0 +1,232 @@
+---
+// src/pages/index.astro
+import StudioLayout from '../layouts/StudioLayout.astro';
+import WallpaperCard from '../components/WallpaperCard.astro';
+import type { Wallpaper } from '../components/WallpaperCard.astro';
+import { wallpapers as wallpapersBrand } from '../data/wallpapers-brand';
+import { wallpapers as pcWallpapers } from '../data/wallpapers';
+import { PinterestRssService } from '../services/PinterestRssService';
+
+// Solo el tablero de Veyxara Studio (sin tableros de Veyxara Core)
+const PINTEREST_RSS_URLS = [
+  'https://www.pinterest.com/arevaloalfredo69/veyxara-studio.rss',
+];
+
+const rssService = new PinterestRssService(PINTEREST_RSS_URLS);
+const pinterestWallpapers: Wallpaper[] = await rssService.fetchWallpapers().catch(() => []);
+
+const featuredPool: Wallpaper[] = [...wallpapersBrand, ...pcWallpapers, ...pinterestWallpapers];
+const randomFeatured =
+  featuredPool.length > 0
+    ? featuredPool[Math.floor(Math.random() * featuredPool.length)]
+    : null;
+---
+
+<StudioLayout>
+  <main class="relative overflow-hidden">
+    <!-- Iluminación artística ambiental (#040914 base + acentos #00CFFF, #FF9900 y #D4AF37) -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[900px] h-[420px] rounded-full blur-3xl opacity-25"
+      style="background: radial-gradient(circle, #00CFFF 0%, rgba(255,153,0,0.45) 45%, rgba(212,175,55,0.15) 70%, transparent 100%);"
+    ></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16">
+      <!-- PORTADA VISUAL DE VEYXARA STUDIO -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-20">
+        <div class="lg:col-span-7 text-left">
+          <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#D4AF37] px-3 py-1 rounded-full bg-[#071426] border border-[#D4AF37]/35">
+            ✦ Arte Digital · Wallpapers · Colecciones Visuales
+          </span>
+
+          <h1
+            class="mt-4 text-3xl sm:text-5xl font-extrabold leading-tight text-[#E8EEF5]"
+            style="font-family: 'Orbitron', sans-serif;"
+          >
+            Mundos, mitos y escenas con <span class="text-[#FF9900]">fuerza</span> y <span class="text-[#00CFFF]">color</span>
+          </h1>
+
+          <p class="mt-4 text-sm sm:text-base text-[#E8EEF5]/80 leading-relaxed max-w-xl">
+            Vitrina creativa de arte generado con IA, fondos de pantalla en alta definición para PC y piezas verticales sincronizadas desde el tablero de Veyxara Studio en Pinterest.
+          </p>
+
+          <div class="mt-7 flex flex-wrap items-center gap-3">
+            <a
+              href="#pc-wallpapers"
+              class="px-5 py-2.5 rounded-xl bg-[#FF9900] text-[#040914] font-bold text-sm hover:bg-[#D4AF37] transition-colors shadow-lg shadow-[#FF9900]/20"
+            >
+              Explorar Wallpapers PC
+            </a>
+            <a
+              href="#pinterest-gallery"
+              class="px-5 py-2.5 rounded-xl bg-[#071426] border border-[#00CFFF]/40 text-[#00CFFF] font-semibold text-sm hover:bg-[#00CFFF]/10 transition-colors"
+            >
+              Ver Tablero Pinterest
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-[#071426] border border-[#FF9900]/40 shadow-[0_0_35px_rgba(0,207,255,0.18)]">
+            {randomFeatured ? (
+              <>
+                <img
+                  src={randomFeatured.image}
+                  alt={randomFeatured.title}
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#040914] via-[#040914]/75 to-transparent p-4">
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-[#00CFFF]">
+                    Destacado · {randomFeatured.category}
+                  </span>
+                  <p class="text-sm font-bold text-[#E8EEF5] truncate mt-0.5">
+                    {randomFeatured.title}
+                  </p>
+                </div>
+              </>
+            ) : (
+              <div class="h-full flex items-center justify-center text-xs text-[#E8EEF5]/60">
+                Agrega tus piezas en src/data/wallpapers.ts
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div id="colecciones" class="space-y-20">
+        <!-- 1. MANEJO DE MARCA (SOLO VISUALIZACIÓN) -->
+        {wallpapersBrand.length > 0 && (
+          <section>
+            <div class="border-b border-white/10 pb-4 mb-8 flex items-center justify-between gap-4">
+              <div>
+                <h2 class="text-xl sm:text-2xl font-bold text-[#D4AF37]" style="font-family: 'Orbitron', sans-serif;">
+                  Manejo de Marca & Arte Insignia
+                </h2>
+                <p class="text-xs sm:text-sm text-[#E8EEF5]/70 mt-1">
+                  Piezas visuales de identidad de marca disponibles para inspección (sin descarga).
+                </p>
+              </div>
+              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-[#071426] border border-[#D4AF37]/40 text-[#D4AF37]">
+                {wallpapersBrand.length} piezas
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {wallpapersBrand.map((wallpaper, idx) => (
+                <WallpaperCard wallpaper={wallpaper} index={idx} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- 2. FONDOS PC LOCALES (CON DESCARGA DIRECTA) -->
+        <section id="pc-wallpapers">
+          <div class="border-b border-white/10 pb-4 mb-8 flex items-center justify-between gap-4">
+            <div>
+              <h2 class="text-xl sm:text-2xl font-bold text-[#FF9900]" style="font-family: 'Orbitron', sans-serif;">
+                Fondos de Escritorio (PC)
+              </h2>
+              <p class="text-xs sm:text-sm text-[#E8EEF5]/70 mt-1">
+                Fondos locales listos para ampliar y descargar en alta calidad.
+              </p>
+            </div>
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-[#071426] border border-[#FF9900]/40 text-[#FF9900]">
+              {pcWallpapers.length} piezas
+            </span>
+          </div>
+
+          {pcWallpapers.length > 0 ? (
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {pcWallpapers.map((wallpaper, idx) => (
+                <WallpaperCard wallpaper={wallpaper} index={1000 + idx} />
+              ))}
+            </div>
+          ) : (
+            <div class="rounded-xl border border-white/10 bg-[#071426]/60 p-10 text-center text-sm text-[#E8EEF5]/70">
+              Agrega tus fondos de escritorio en <code class="text-[#00CFFF]">src/data/wallpapers.ts</code>.
+            </div>
+          )}
+        </section>
+
+        <!-- 3. TABLERO DE PINTEREST DE VEYXARA STUDIO -->
+        <section id="pinterest-gallery">
+          <div class="border-b border-white/10 pb-4 mb-8 flex items-center justify-between gap-4">
+            <div>
+              <h2 class="text-xl sm:text-2xl font-bold text-[#00CFFF]" style="font-family: 'Orbitron', sans-serif;">
+                Tablero Veyxara Studio (Pinterest)
+              </h2>
+              <p class="text-xs sm:text-sm text-[#E8EEF5]/70 mt-1">
+                Piezas sincronizadas desde el tablero de Veyxara Studio en Pinterest.
+              </p>
+            </div>
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-[#071426] border border-[#00CFFF]/40 text-[#00CFFF]">
+              {pinterestWallpapers.length} pines
+            </span>
+          </div>
+
+          {pinterestWallpapers.length > 0 ? (
+            <>
+              <div id="pinterest-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {pinterestWallpapers.map((wallpaper, idx) => (
+                  <div class={`pinterest-block-item ${idx >= 12 ? 'hidden' : ''}`}>
+                    <WallpaperCard wallpaper={wallpaper} index={2000 + idx} />
+                  </div>
+                ))}
+              </div>
+
+              {pinterestWallpapers.length > 12 && (
+                <div class="mt-10 flex justify-center">
+                  <button
+                    id="load-more-pinterest-btn"
+                    type="button"
+                    class="px-6 py-2.5 rounded-xl bg-[#071426] border border-[#00CFFF]/50 text-[#00CFFF] text-sm font-bold hover:bg-[#00CFFF] hover:text-[#040914] transition-all cursor-pointer"
+                  >
+                    Cargar más
+                  </button>
+                </div>
+              )}
+            </>
+          ) : (
+            <div class="rounded-xl border border-white/10 bg-[#071426]/60 p-12 text-center text-sm text-[#E8EEF5]/70">
+              No se encontraron pines en el RSS del tablero de Veyxara Studio en este momento.
+            </div>
+          )}
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const setupPinterestLoadMore = () => {
+      const btn = document.getElementById('load-more-pinterest-btn');
+      if (!btn || btn.dataset.bound === 'true') return;
+      btn.dataset.bound = 'true';
+
+      const STEP = 12;
+      const items = Array.from(document.querySelectorAll<HTMLElement>('.pinterest-block-item'));
+
+      const syncButton = () => {
+        if (!items.some((el) => el.classList.contains('hidden'))) {
+          btn.classList.add('hidden');
+        }
+      };
+
+      btn.addEventListener('click', () => {
+        let shown = 0;
+        for (const el of items) {
+          if (el.classList.contains('hidden')) {
+            el.classList.remove('hidden');
+            shown += 1;
+            if (shown >= STEP) break;
+          }
+        }
+        syncButton();
+      });
+
+      syncButton();
+    };
+
+    document.addEventListener('DOMContentLoaded', setupPinterestLoadMore);
+    document.addEventListener('astro:page-load', setupPinterestLoadMore);
+  </script>
+</StudioLayout>
