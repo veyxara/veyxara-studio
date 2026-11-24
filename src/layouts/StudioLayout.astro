@@ -14,7 +14,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="es" class="dark">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,32 +28,32 @@ const {
     />
   </head>
   <body
-    class="min-h-screen bg-[#040914] text-[#E8EEF5] antialiased selection:bg-[#FF9900]/30 selection:text-[#E8EEF5]"
-    style="background-color: #040914; color: #E8EEF5; font-family: 'Plus Jakarta Sans', system-ui, sans-serif;"
+    class="min-h-screen bg-[#FFFDF7] text-[#1E293B] antialiased selection:bg-[#FF9900]/25 selection:text-[#0F172A]"
+    style="background-color: #FFFDF7; color: #1E293B; font-family: 'Plus Jakarta Sans', system-ui, sans-serif;"
   >
-    <header class="sticky top-0 z-40 border-b border-[#FF9900]/20 bg-[#040914]/90 backdrop-blur-md">
+    <header class="sticky top-0 z-40 border-b border-[#FF9900]/25 bg-[#FFFDF7]/95 backdrop-blur-md">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
         <a href="/" class="flex items-center gap-2.5 group shrink-0">
           <span
-            class="text-lg sm:text-xl font-extrabold tracking-wider text-[#E8EEF5] group-hover:text-[#FF9900] transition-colors"
+            class="text-lg sm:text-xl font-extrabold tracking-wider text-[#0F172A] group-hover:text-[#D97706] transition-colors"
             style="font-family: 'Orbitron', sans-serif;"
           >
             VEYXARA <span class="text-[#FF9900]">STUDIO</span>
           </span>
-          <span class="hidden sm:inline-block text-[10px] font-mono uppercase px-2 py-0.5 rounded-full border border-[#D4AF37]/50 text-[#D4AF37]">
+          <span class="hidden sm:inline-block text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-[#FEF3C7] border border-[#D4AF37]/60 text-[#92400E]">
             Visual Gallery
           </span>
         </a>
 
         <nav class="flex items-center gap-4 text-xs sm:text-sm shrink-0">
-          <a href="#colecciones" class="text-[#E8EEF5]/85 hover:text-[#FF9900] transition-colors">
+          <a href="#colecciones" class="font-medium text-[#334155] hover:text-[#D97706] transition-colors">
             Colecciones
           </a>
           <a
             href="https://veyxara.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="px-3 py-1.5 rounded-lg border border-[#FF9900]/45 text-[#FF9900] hover:bg-[#FF9900]/10 transition-colors"
+            class="px-3 py-1.5 rounded-lg bg-[#FEF3C7] border border-[#FF9900]/50 text-[#92400E] font-semibold hover:bg-[#FF9900] hover:text-[#0F172A] transition-colors"
           >
             Veyxara Core ↗
           </a>
@@ -63,16 +63,16 @@ const {
 
     <slot />
 
-    <footer class="border-t border-[#FF9900]/15 bg-[#040914] py-8 mt-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#E8EEF5]/70">
+    <footer class="border-t border-[#FF9900]/20 bg-[#FFF8E7] py-8 mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#475569]">
         <p>
-          <strong class="text-[#D4AF37]" style="font-family: 'Orbitron', sans-serif;">VEYXARA STUDIO</strong> · Arte digital, wallpapers y piezas visuales.
+          <strong class="text-[#0F172A]" style="font-family: 'Orbitron', sans-serif;">VEYXARA STUDIO</strong> · Arte digital, wallpapers y piezas visuales.
         </p>
         <div class="flex items-center gap-5">
-          <a href="https://www.pinterest.com/arevaloalfredo69/" target="_blank" rel="noopener noreferrer" class="hover:text-[#FF9900] transition-colors">
+          <a href="https://www.pinterest.com/arevaloalfredo69/" target="_blank" rel="noopener noreferrer" class="font-medium hover:text-[#D97706] transition-colors">
             Pinterest
           </a>
-          <a href="https://veyxara.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#D4AF37] transition-colors">
+          <a href="https://veyxara.com" target="_blank" rel="noopener noreferrer" class="font-medium hover:text-[#D97706] transition-colors">
             Portal Técnico (Core)
           </a>
         </div>

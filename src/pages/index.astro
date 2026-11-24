@@ -23,43 +23,43 @@ const randomFeatured =
 ---
 
 <StudioLayout>
-  <main class="relative overflow-hidden bg-[#040914]">
-    <!-- Resplandor cálido sutil en ámbar y dorado sobre fondo oscuro puro -->
+  <main class="relative overflow-hidden bg-[#FFFDF7]">
+    <!-- Resplandor cálido claro en ámbar y dorado -->
     <div
       aria-hidden="true"
-      class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[880px] h-[380px] rounded-full blur-3xl opacity-15"
-      style="background: radial-gradient(circle, rgba(255,153,0,0.55) 0%, rgba(212,175,55,0.22) 55%, transparent 100%);"
+      class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[920px] h-[380px] rounded-full blur-3xl opacity-35"
+      style="background: radial-gradient(circle, rgba(255,183,3,0.45) 0%, rgba(255,153,0,0.22) 55%, transparent 100%);"
     ></div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16">
       <!-- PORTADA VISUAL DE VEYXARA STUDIO -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-20">
         <div class="lg:col-span-7 text-left">
-          <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#D4AF37] px-3 py-1 rounded-full bg-[#05070A] border border-[#D4AF37]/40">
+          <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#92400E] px-3 py-1 rounded-full bg-[#FEF3C7] border border-[#D4AF37]/50">
             ✦ Arte Digital · Wallpapers · Colecciones Visuales
           </span>
 
           <h1
-            class="mt-4 text-3xl sm:text-5xl font-extrabold leading-tight text-[#E8EEF5]"
+            class="mt-4 text-3xl sm:text-5xl font-extrabold leading-tight text-[#0F172A]"
             style="font-family: 'Orbitron', sans-serif;"
           >
-            Mundos, mitos y escenas con <span class="text-[#FF9900]">fuerza</span> y <span class="text-[#D4AF37]">color</span>
+            Mundos, mitos y escenas con <span class="text-[#D97706]">fuerza</span> y <span class="text-[#EA580C]">color</span>
           </h1>
 
-          <p class="mt-4 text-sm sm:text-base text-[#E8EEF5]/80 leading-relaxed max-w-xl">
+          <p class="mt-4 text-sm sm:text-base text-[#334155] leading-relaxed max-w-xl">
             Vitrina creativa de arte generado con IA, fondos de pantalla en alta definición para PC y piezas verticales sincronizadas desde el tablero de Veyxara Studio en Pinterest.
           </p>
 
           <div class="mt-7 flex flex-wrap items-center gap-3">
             <a
               href="#pc-wallpapers"
-              class="px-5 py-2.5 rounded-xl bg-[#FF9900] text-[#040914] font-bold text-sm hover:bg-[#D4AF37] transition-colors shadow-lg shadow-[#FF9900]/20"
+              class="px-5 py-2.5 rounded-xl bg-[#FF9900] text-[#0F172A] font-bold text-sm hover:bg-[#EA580C] hover:text-white transition-colors shadow-md shadow-[#FF9900]/25"
             >
               Explorar Wallpapers PC
             </a>
             <a
               href="#pinterest-gallery"
-              class="px-5 py-2.5 rounded-xl bg-[#05070A] border border-[#D4AF37]/45 text-[#D4AF37] font-semibold text-sm hover:bg-[#D4AF37]/10 transition-colors"
+              class="px-5 py-2.5 rounded-xl bg-white border border-[#D4AF37]/60 text-[#92400E] font-bold text-sm hover:bg-[#FEF3C7] transition-colors"
             >
               Ver Tablero Pinterest
             </a>
@@ -67,7 +67,7 @@ const randomFeatured =
         </div>
 
         <div class="lg:col-span-5">
-          <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-[#05070A] border border-[#FF9900]/40 shadow-[0_0_30px_rgba(255,153,0,0.14)]">
+          <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-white border-2 border-[#FF9900]/50 shadow-xl shadow-amber-900/10">
             {randomFeatured ? (
               <>
                 <img
@@ -75,17 +75,17 @@ const randomFeatured =
                   alt={randomFeatured.title}
                   class="w-full h-full object-cover"
                 />
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#040914] via-[#040914]/75 to-transparent p-4">
-                  <span class="text-[11px] font-semibold uppercase tracking-wider text-[#FF9900]">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0F172A]/90 via-[#0F172A]/60 to-transparent p-4">
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-[#FBBF24]">
                     Destacado · {randomFeatured.category}
                   </span>
-                  <p class="text-sm font-bold text-[#E8EEF5] truncate mt-0.5">
+                  <p class="text-sm font-bold text-white truncate mt-0.5">
                     {randomFeatured.title}
                   </p>
                 </div>
               </>
             ) : (
-              <div class="h-full flex items-center justify-center text-xs text-[#E8EEF5]/60">
+              <div class="h-full flex items-center justify-center text-xs text-[#64748B]">
                 Agrega tus piezas en src/data/wallpapers.ts
               </div>
             )}
@@ -97,16 +97,16 @@ const randomFeatured =
         <!-- 1. MANEJO DE MARCA (SOLO VISUALIZACIÓN) -->
         {wallpapersBrand.length > 0 && (
           <section>
-            <div class="border-b border-white/10 pb-4 mb-8 flex items-center justify-between gap-4">
+            <div class="border-b border-[#D4AF37]/30 pb-4 mb-8 flex items-center justify-between gap-4">
               <div>
-                <h2 class="text-xl sm:text-2xl font-bold text-[#D4AF37]" style="font-family: 'Orbitron', sans-serif;">
-                  Manejo de Marca & Arte Insignia
+                <h2 class="text-xl sm:text-2xl font-bold text-[#0F172A]" style="font-family: 'Orbitron', sans-serif;">
+                  Manejo de Marca & <span class="text-[#D97706]">Arte Insignia</span>
                 </h2>
-                <p class="text-xs sm:text-sm text-[#E8EEF5]/70 mt-1">
+                <p class="text-xs sm:text-sm text-[#475569] mt-1">
                   Piezas visuales de identidad de marca disponibles para inspección (sin descarga).
                 </p>
               </div>
-              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-[#05070A] border border-[#D4AF37]/40 text-[#D4AF37]">
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-[#FEF3C7] border border-[#D4AF37]/50 text-[#92400E]">
                 {wallpapersBrand.length} piezas
               </span>
             </div>
@@ -121,16 +121,16 @@ const randomFeatured =
 
         <!-- 2. FONDOS PC LOCALES (CON DESCARGA DIRECTA) -->
         <section id="pc-wallpapers">
-          <div class="border-b border-white/10 pb-4 mb-8 flex items-center justify-between gap-4">
+          <div class="border-b border-[#FF9900]/30 pb-4 mb-8 flex items-center justify-between gap-4">
             <div>
-              <h2 class="text-xl sm:text-2xl font-bold text-[#FF9900]" style="font-family: 'Orbitron', sans-serif;">
-                Fondos de Escritorio (PC)
+              <h2 class="text-xl sm:text-2xl font-bold text-[#0F172A]" style="font-family: 'Orbitron', sans-serif;">
+                Fondos de Escritorio <span class="text-[#FF9900]">(PC)</span>
               </h2>
-              <p class="text-xs sm:text-sm text-[#E8EEF5]/70 mt-1">
+              <p class="text-xs sm:text-sm text-[#475569] mt-1">
                 Fondos locales listos para ampliar y descargar en alta calidad.
               </p>
             </div>
-            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-[#05070A] border border-[#FF9900]/40 text-[#FF9900]">
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-[#FEF3C7] border border-[#FF9900]/50 text-[#92400E]">
               {pcWallpapers.length} piezas
             </span>
           </div>
@@ -142,24 +142,24 @@ const randomFeatured =
               ))}
             </div>
           ) : (
-            <div class="rounded-xl border border-white/10 bg-[#05070A] p-10 text-center text-sm text-[#E8EEF5]/70">
-              Agrega tus fondos de escritorio en <code class="text-[#FF9900]">src/data/wallpapers.ts</code>.
+            <div class="rounded-xl border border-[#D4AF37]/30 bg-white p-10 text-center text-sm text-[#475569]">
+              Agrega tus fondos de escritorio en <code class="text-[#D97706]">src/data/wallpapers.ts</code>.
             </div>
           )}
         </section>
 
         <!-- 3. TABLERO DE PINTEREST DE VEYXARA STUDIO -->
         <section id="pinterest-gallery">
-          <div class="border-b border-white/10 pb-4 mb-8 flex items-center justify-between gap-4">
+          <div class="border-b border-[#FF9900]/30 pb-4 mb-8 flex items-center justify-between gap-4">
             <div>
-              <h2 class="text-xl sm:text-2xl font-bold text-[#FF9900]" style="font-family: 'Orbitron', sans-serif;">
-                Tablero Veyxara Studio (Pinterest)
+              <h2 class="text-xl sm:text-2xl font-bold text-[#0F172A]" style="font-family: 'Orbitron', sans-serif;">
+                Tablero Veyxara Studio <span class="text-[#EA580C]">(Pinterest)</span>
               </h2>
-              <p class="text-xs sm:text-sm text-[#E8EEF5]/70 mt-1">
+              <p class="text-xs sm:text-sm text-[#475569] mt-1">
                 Piezas sincronizadas desde el tablero de Veyxara Studio en Pinterest.
               </p>
             </div>
-            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-[#05070A] border border-[#FF9900]/40 text-[#FF9900]">
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-[#FEF3C7] border border-[#FF9900]/50 text-[#92400E]">
               {pinterestWallpapers.length} pines
             </span>
           </div>
@@ -179,7 +179,7 @@ const randomFeatured =
                   <button
                     id="load-more-pinterest-btn"
                     type="button"
-                    class="px-6 py-2.5 rounded-xl bg-[#05070A] border border-[#FF9900]/50 text-[#FF9900] text-sm font-bold hover:bg-[#FF9900] hover:text-[#040914] transition-all cursor-pointer"
+                    class="px-6 py-2.5 rounded-xl bg-white border border-[#FF9900]/60 text-[#92400E] text-sm font-bold hover:bg-[#FF9900] hover:text-[#0F172A] transition-all cursor-pointer shadow-sm"
                   >
                     Cargar más
                   </button>
@@ -187,7 +187,7 @@ const randomFeatured =
               )}
             </>
           ) : (
-            <div class="rounded-xl border border-white/10 bg-[#05070A] p-12 text-center text-sm text-[#E8EEF5]/70">
+            <div class="rounded-xl border border-[#D4AF37]/30 bg-white p-12 text-center text-sm text-[#475569]">
               No se encontraron pines en el RSS del tablero de Veyxara Studio en este momento.
             </div>
           )}
