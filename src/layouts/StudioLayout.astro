@@ -12,20 +12,26 @@ const {
   description = 'Vitrina creativa de arte digital, fondos de pantalla en alta definición y colecciones visuales.',
 } = Astro.props;
 
+const ICON_VERSION = 'v4';
+const iconUrl = (file: string) => `/${file}?v=${ICON_VERSION}`;
+
 const studioTheme = {
-  pageBg: 'bg-[#FAF6EE]',
-  headerBg: 'bg-[#F3E8D2]/95',
-  footerBg: 'bg-[#EFE3C8]',
-  surfaceElevated: 'bg-[#FFFDF9]',
-  pillBg: 'bg-[#EAD9B7]/80',
-  borderWarm: 'border-[#B45309]/25',
-  borderPill: 'border-[#B45309]/35',
-  borderAction: 'border-[#B45309]/45',
-  textPrimary: 'text-[#1C1917]',
-  textSecondary: 'text-[#44403C]',
-  accentAmber: 'text-[#B45309]',
-  badgeText: 'text-[#78350F]',
-};
+  page: 'bg-[#FAF6EE] text-[#1C1917] selection:bg-[#B45309]/20 selection:text-[#1C1917]',
+  header: 'bg-[#F3E8D2]/95 border-[#B45309]/25',
+  footer: 'bg-[#EFE3C8] border-[#B45309]/25 text-[#44403C]',
+  surfaceElevated: 'bg-[#FFFDF9] border-[#B45309]/45 text-[#78350F] hover:bg-[#E6D2AE] hover:text-[#1C1917]',
+  pill: 'bg-[#EAD9B7]/80 border-[#B45309]/35 text-[#78350F]',
+  brandBox: 'bg-[#071426] border-[#B45309]/45',
+  accentText: 'text-[#B45309]',
+  linkSecondary: 'text-[#44403C] hover:text-[#B45309]',
+} as const;
+
+const links = {
+  collections: '/#colecciones',
+  coreHome: 'https://veyxara.com',
+  privacy: 'https://veyxara.com/privacidad',
+  terms: 'https://veyxara.com/terminos',
+} as const;
 ---
 
 <!doctype html>
@@ -35,14 +41,16 @@ const studioTheme = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" type="image/png" href="/favicon-96x96.png?v=4" sizes="96x96" />
-    <link rel="icon" type="image/png" href="/favicon-48x48.png?v=4" sizes="48x48" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4" />
-    <link rel="shortcut icon" href="/favicon.ico?v=4" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=4" />
+
+    <link rel="icon" type="image/png" href={iconUrl('favicon-96x96.png')} sizes="96x96" />
+    <link rel="icon" type="image/png" href={iconUrl('favicon-48x48.png')} sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href={iconUrl('favicon.svg')} />
+    <link rel="shortcut icon" href={iconUrl('favicon.ico')} />
+    <link rel="apple-touch-icon" sizes="180x180" href={iconUrl('apple-touch-icon.png')} />
     <meta name="apple-mobile-web-app-title" content="Veyxara Studio" />
-    <link rel="manifest" href="/site.webmanifest?v=4" />
+
     <slot name="head" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -51,76 +59,59 @@ const studioTheme = {
     />
   </head>
   <body
-    class:list={[
-      'min-h-screen antialiased selection:bg-[#B45309]/20 selection:text-[#1C1917]',
-      studioTheme.pageBg,
-      studioTheme.textPrimary,
-    ]}
+    class:list={['min-h-screen antialiased', studioTheme.page]}
     style="font-family: 'Plus Jakarta Sans', system-ui, sans-serif;"
   >
-    <header
-      class:list={[
-        'sticky top-0 z-40 border-b backdrop-blur-md',
-        studioTheme.headerBg,
-        studioTheme.borderWarm,
-      ]}
-    >
+    <header class:list={['sticky top-0 z-40 border-b backdrop-blur-md', studioTheme.header]}>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
         <a href="/" class="flex items-center gap-3 group shrink-0">
           <span
             class:list={[
-              'w-9 h-9 sm:w-11 sm:h-11 rounded-xl p-0.5 flex items-center justify-center bg-[#071426] border transition-transform duration-200 group-hover:scale-105 shrink-0',
-              studioTheme.borderAction,
+              'w-9 h-9 sm:w-11 sm:h-11 rounded-xl p-0.5 flex items-center justify-center border transition-transform duration-200 group-hover:scale-105 shrink-0',
+              studioTheme.brandBox,
             ]}
           >
             <img
-              src="/favicon.svg?v=4"
-              alt="Veyxara Studio"
+              src={iconUrl('favicon.svg')}
+              alt=""
+              aria-hidden="true"
               width="40"
               height="40"
               class="w-full h-full object-contain rounded-[9px]"
             />
           </span>
+
           <span
-            class:list={[
-              'text-lg sm:text-xl font-extrabold tracking-wider transition-colors whitespace-nowrap group-hover:text-[#B45309]',
-              studioTheme.textPrimary,
-            ]}
+            class="text-lg sm:text-xl font-extrabold tracking-wider transition-colors whitespace-nowrap group-hover:text-[#B45309]"
             style="font-family: 'Orbitron', sans-serif;"
           >
-            VEYXARA <span class={studioTheme.accentAmber}>STUDIO</span>
+            VEYXARA <span class={studioTheme.accentText}>STUDIO</span>
           </span>
+
           <span
             class:list={[
               'hidden sm:inline-block text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded-full border whitespace-nowrap',
-              studioTheme.pillBg,
-              studioTheme.borderPill,
-              studioTheme.badgeText,
+              studioTheme.pill,
             ]}
           >
             Visual Gallery
           </span>
         </a>
 
-        <nav class="flex items-center gap-4 text-xs sm:text-sm shrink-0">
+        <nav aria-label="Navegación principal" class="flex items-center gap-4 text-xs sm:text-sm shrink-0">
           <a
-            href="#colecciones"
-            class:list={[
-              'font-semibold transition-colors whitespace-nowrap hover:text-[#B45309]',
-              studioTheme.textSecondary,
-            ]}
+            href={links.collections}
+            class:list={['font-semibold transition-colors whitespace-nowrap', studioTheme.linkSecondary]}
           >
             Colecciones
           </a>
           <a
-            href="https://veyxara.com"
+            href={links.coreHome}
             target="_blank"
             rel="noopener noreferrer"
             class:list={[
-              'px-3 py-1.5 rounded-lg border font-bold transition-colors whitespace-nowrap hover:bg-[#E6D2AE] hover:text-[#1C1917]',
+              'px-3 py-1.5 rounded-lg border font-bold transition-colors whitespace-nowrap',
               studioTheme.surfaceElevated,
-              studioTheme.borderAction,
-              studioTheme.badgeText,
             ]}
           >
             Veyxara Core ↗
@@ -129,56 +120,50 @@ const studioTheme = {
       </div>
     </header>
 
-    <slot />
+    <main>
+      <slot />
+    </main>
 
-    <footer
-      class:list={[
-        'border-t py-8 mt-20',
-        studioTheme.footerBg,
-        studioTheme.borderWarm,
-      ]}
-    >
-      <div
-        class:list={[
-          'max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-center gap-2.5 text-center text-xs',
-          studioTheme.textSecondary,
-        ]}
-      >
+    <footer class:list={['border-t py-8 mt-20', studioTheme.footer]}>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-center gap-2.5 text-center text-xs">
         <p>
-          <strong class={studioTheme.textPrimary} style="font-family: 'Orbitron', sans-serif;">
+          <strong class="text-[#1C1917]" style="font-family: 'Orbitron', sans-serif;">
             VEYXARA STUDIO
           </strong>{' '}
           — © 2026 Arte digital, wallpapers y piezas visuales.
         </p>
 
-        <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+        <nav
+          aria-label="Enlaces legales y del portal"
+          class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2"
+        >
           <a
-            href="https://veyxara.com/privacidad"
+            href={links.privacy}
             target="_blank"
             rel="noopener noreferrer"
-            class="hover:text-[#B45309] transition-colors"
+            class:list={['transition-colors', studioTheme.linkSecondary]}
           >
             Política de Privacidad
           </a>
           <span aria-hidden="true" class="opacity-40">|</span>
           <a
-            href="https://veyxara.com/terminos"
+            href={links.terms}
             target="_blank"
             rel="noopener noreferrer"
-            class="hover:text-[#B45309] transition-colors"
+            class:list={['transition-colors', studioTheme.linkSecondary]}
           >
             Términos de Servicio
           </a>
           <span aria-hidden="true" class="opacity-40">|</span>
           <a
-            href="https://veyxara.com"
+            href={links.coreHome}
             target="_blank"
             rel="noopener noreferrer"
-            class="font-semibold hover:text-[#B45309] transition-colors"
+            class:list={['font-semibold transition-colors', studioTheme.linkSecondary]}
           >
             Portal Técnico (Core)
           </a>
-        </div>
+        </nav>
       </div>
     </footer>
   </body>

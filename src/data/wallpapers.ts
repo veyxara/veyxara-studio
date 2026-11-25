@@ -12,7 +12,7 @@ export interface Wallpaper {
 
 export const wallpapers: Wallpaper[] = [
 
-    {
+   {
     id: 'el-paraiso',
     title: 'El huerto del Edén, el Origen',
     category: 'Mobile', 
@@ -20,6 +20,15 @@ export const wallpapers: Wallpaper[] = [
     aspectRatio: '9:16',
     image: '/wallpapers/el-paraiso.webp',    
     downloadUrl: '/wallpapers/el-paraiso.webp'
+  },
+    {
+    id: 'imagen-carnaval',
+    title: 'Illustration Colorful Mask Carnival',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+    image: '/wallpapers/imagen-carnaval.webp',    
+    downloadUrl: '/wallpapers/imagen-carnaval.webp'
   },
     {
     id: 'luna-es-hueca',
@@ -293,7 +302,7 @@ export const wallpapers: Wallpaper[] = [
   },
    {
     id: 'nave-veyxara',
-    title: 'Nave Internacional Espacial',
+    title: 'Nave Espacial Interestelar',
     category: 'Desktop', 
     resolution: '3840x2160 (4K)',
     aspectRatio: '16:9',
