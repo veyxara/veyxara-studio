@@ -19,10 +19,9 @@ const rssService = new PinterestRssService(
   PINTEREST_RSS_URLS,
   STUDIO_PINTEREST_FALLBACK
 );
-const pinterestWallpapers: Wallpaper[] = (await rssService.fetchWallpapers().catch(() => [])).slice(
-  0,
-  40
-);
+const pinterestWallpapers: Wallpaper[] = (
+  await rssService.fetchWallpapers().catch(() => [])
+).slice(0, 40);
 
 // SEO para Google y Bing
 const siteUrl = 'https://studio.veyxara.com';
@@ -59,13 +58,15 @@ const jsonLd = {
         width: 1920,
         height: 1080,
       },
-      mainEntity: {
-        '@type': 'ImageGallery',
-        '@id': `${siteUrl}/#gallery`,
-        name: 'Colecciones de Arte Digital y Wallpapers — Veyxara Studio',
-        description: seoDescription,
-        numberOfItems: totalPieces,
-      },
+      mainEntity: { '@id': `${siteUrl}/#gallery` },
+    },
+    {
+      '@type': 'ImageGallery',
+      '@id': `${siteUrl}/#gallery`,
+      url: canonicalUrl,
+      name: 'Colecciones de Arte Digital y Wallpapers — Veyxara Studio',
+      description: seoDescription,
+      numberOfItems: totalPieces,
     },
   ],
 };
@@ -345,7 +346,7 @@ const studioSectionTheme = {
                     class:list={[
                       'px-6 py-2.5 rounded-xl border text-sm font-bold transition-all cursor-pointer shadow-xs hover:bg-[#292524] hover:text-[#FFFDF9] hover:border-[#292524]',
                       studioSectionTheme.emptyCard,
-                      studioSectionTheme.inkPrimary,
+                      studioSectionTheme.headingInk,
                     ]}
                   >
                     Cargar más
