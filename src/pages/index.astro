@@ -2,25 +2,10 @@
 // src/pages/index.astro
 import StudioLayout from '../layouts/StudioLayout.astro';
 import WallpaperCard from '../components/WallpaperCard.astro';
-import type { Wallpaper } from '../components/WallpaperCard.astro';
 import { wallpapers as wallpapersBrand } from '../data/wallpapers-brand';
 import { wallpapers as pcWallpapers } from '../data/wallpapers';
-import { PinterestRssService } from '../services/PinterestRssService';
 
-// Tablero de Veyxara Studio para la selección destacada
-const PINTEREST_RSS_URLS = [
-  'https://www.pinterest.com/arevaloalfredo69/veyxara-studio.rss',
-];
-
-const STUDIO_PINTEREST_FALLBACK: Wallpaper[] = [];
-
-const rssService = new PinterestRssService(
-  PINTEREST_RSS_URLS,
-  STUDIO_PINTEREST_FALLBACK
-);
-const pinterestWallpapers: Wallpaper[] = (
-  await rssService.fetchWallpapers().catch(() => [])
-).slice(0, 40);
+const ALL_PINS_URL = 'https://co.pinterest.com/arevaloalfredo69/pins/';
 
 // SEO para Google y Bing
 const siteUrl = 'https://studio.veyxara.com';
@@ -30,8 +15,7 @@ const seoDescription =
   'Vitrina creativa de arte generado con IA, fondos de pantalla en alta definición para PC y colecciones visuales de Veyxara Studio.';
 const seoImage = `${siteUrl}/hero-studio.webp`;
 
-const totalPieces =
-  wallpapersBrand.length + pcWallpapers.length + pinterestWallpapers.length;
+const totalPieces = wallpapersBrand.length + pcWallpapers.length;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -282,7 +266,7 @@ const studioSectionTheme = {
           )}
         </section>
 
-        <!-- 3. GALERÍA EXTENDIDA / TODOS LOS PINES -->
+        <!-- 3. ARCHIVO COMPLETO DE IMÁGENES (TODOS LOS PINES) -->
         <section
           id="pinterest-gallery"
           aria-labelledby="pinterest-heading"
@@ -294,7 +278,7 @@ const studioSectionTheme = {
         >
           <div
             class:list={[
-              'border-b pb-4 mb-8 flex items-center justify-between gap-4',
+              'border-b pb-4 mb-6 flex items-center justify-between gap-4',
               studioSectionTheme.dividerBorder,
             ]}
           >
@@ -304,11 +288,11 @@ const studioSectionTheme = {
                 class:list={['text-xl sm:text-2xl font-bold', studioSectionTheme.headingInk]}
                 style="font-family: 'Orbitron', sans-serif;"
               >
-                Galería Extendida{' '}
-                <span class={studioSectionTheme.accentText}>(Todos los Pines)</span>
+                Archivo Completo{' '}
+                <span class={studioSectionTheme.accentText}>(+100 Imágenes)</span>
               </h2>
               <p class:list={['text-xs sm:text-sm mt-1', studioSectionTheme.bodyInk]}>
-                Selección destacada en la página; explora más imágenes directamente en la sección de todos los pines.
+                Para ver todo el catálogo de piezas y no quedarte solo con una muestra recortada, entra directamente a la vista de todos los pines.
               </p>
             </div>
             <span
@@ -319,101 +303,30 @@ const studioSectionTheme = {
                 studioSectionTheme.pillText,
               ]}
             >
-              {pinterestWallpapers.length} piezas
+              +100 piezas
             </span>
           </div>
 
-          {pinterestWallpapers.length > 0 ? (
-            <>
-              <div
-                id="pinterest-grid"
-                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-              >
-                {pinterestWallpapers.map((wallpaper, idx) => (
-                  <div class={`pinterest-block-item ${idx >= 12 ? 'hidden' : ''}`}>
-                    <WallpaperCard wallpaper={wallpaper} index={2000 + idx} />
-                  </div>
-                ))}
-              </div>
-
-              <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-                {pinterestWallpapers.length > 12 && (
-                  <button
-                    id="load-more-pinterest-btn"
-                    type="button"
-                    class:list={[
-                      'px-6 py-2.5 rounded-xl border text-sm font-bold transition-all cursor-pointer shadow-xs hover:bg-[#292524] hover:text-[#FFFDF9] hover:border-[#292524]',
-                      studioSectionTheme.emptyCard,
-                      studioSectionTheme.headingInk,
-                    ]}
-                  >
-                    Cargar más aquí
-                  </button>
-                )}
-
-                <a
-                  href="https://co.pinterest.com/arevaloalfredo69/pins/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-[#B45309] text-sm font-bold text-[#FFFDF9] shadow-xs transition-colors hover:bg-[#92400E]"
-                >
-                  Ver más imágenes en todos los pines ↗
-                </a>
-              </div>
-            </>
-          ) : (
-            <div class:list={['rounded-xl border p-12 text-center text-sm space-y-4', studioSectionTheme.emptyCard]}>
-              <p>
-                Revisa el archivo completo de imágenes directamente en tu vista de todos los pines.
-              </p>
-              <div>
-                <a
-                  href="https://co.pinterest.com/arevaloalfredo69/pins/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-[#B45309] text-sm font-bold text-[#FFFDF9] shadow-xs transition-colors hover:bg-[#92400E]"
-                >
-                  Ver más imágenes en todos los pines ↗
-                </a>
-              </div>
-            </div>
-          )}
+          <div
+            class:list={[
+              'rounded-2xl border p-8 sm:p-10 text-center flex flex-col items-center justify-center gap-4',
+              studioSectionTheme.emptyCard,
+            ]}
+          >
+            <p class:list={['max-w-xl text-sm sm:text-base leading-relaxed', studioSectionTheme.bodyInk]}>
+              Aquí reunimos las piezas destacadas y fondos locales de escritorio. Si quieres explorar las más de 100 imágenes publicadas, revisa directamente la sección con todos los pines.
+            </p>
+            <a
+              href={ALL_PINS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#B45309] text-sm font-bold text-[#FFFDF9] shadow-xs transition-colors hover:bg-[#92400E]"
+            >
+              Ver todas las imágenes (+100 pines) ↗
+            </a>
+          </div>
         </section>
       </div>
     </div>
   </main>
-
-  <script>
-    const setupPinterestLoadMore = () => {
-      const btn = document.getElementById('load-more-pinterest-btn');
-      if (!btn || btn.dataset.bound === 'true') return;
-      btn.dataset.bound = 'true';
-
-      const STEP = 12;
-      const items = Array.from(document.querySelectorAll<HTMLElement>('.pinterest-block-item'));
-
-      const syncButton = () => {
-        if (!items.some((el) => el.classList.contains('hidden'))) {
-          btn.classList.add('hidden');
-        }
-      };
-
-      btn.addEventListener('click', () => {
-        let shown = 0;
-        for (const el of items) {
-          if (el.classList.contains('hidden')) {
-            el.classList.remove('hidden');
-            shown += 1;
-            if (shown >= STEP) break;
-          }
-        }
-        syncButton();
-      });
-
-      syncButton();
-    };
-
-    document.addEventListener('DOMContentLoaded', setupPinterestLoadMore);
-    document.addEventListener('astro:page-load', setupPinterestLoadMore);
-  </script>
 </StudioLayout>
