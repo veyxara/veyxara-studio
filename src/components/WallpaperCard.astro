@@ -205,7 +205,7 @@ const cardColors = {
           data-image={downloadSource}
           data-title={wallpaper.title}
         >
-          <span>Descargar</span>
+          <span>Descargar JPG</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-3.5 w-3.5 shrink-0"
@@ -357,7 +357,7 @@ const cardColors = {
             data-image={downloadSource}
             data-title={wallpaper.title}
           >
-            <span>Descargar en Alta Resolución</span>
+            <span>Descargar en Alta Resolución (JPG)</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-4 w-4 shrink-0"
@@ -397,6 +397,9 @@ const cardColors = {
 </article>
 
 <script>
+  const DOWNLOAD_MIME_TYPE: 'image/jpeg' | 'image/png' = 'image/jpeg';
+  const DOWNLOAD_EXTENSION = DOWNLOAD_MIME_TYPE === 'image/png' ? 'png' : 'jpg';
+
   const inferExtension = (url: string, mimeType?: string): string => {
     if (mimeType?.includes('webp')) return 'webp';
     if (mimeType?.includes('png')) return 'png';
@@ -405,6 +408,18 @@ const cardColors = {
     const match = cleanUrl.match(/\.(webp|png|jpe?g)$/);
     if (!match) return 'webp';
     return match[1] === 'jpeg' ? 'jpg' : match[1];
+  };
+
+  const triggerDownload = (href: string, fileName: string, revokeAfter = false) => {
+    const link = document.createElement('a');
+    link.href = href;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    if (revokeAfter) {
+      setTimeout(() => URL.revokeObjectURL(href), 1000);
+    }
   };
 
   const setupWallpaperCards = () => {
@@ -447,24 +462,47 @@ const cardColors = {
           const response = await fetch(imageSrc);
           if (!response.ok) throw new Error('Network response not ok');
           const blob = await response.blob();
-          const ext = inferExtension(imageSrc, blob.type);
           const objectUrl = URL.createObjectURL(blob);
 
-          const link = document.createElement('a');
-          link.href = objectUrl;
-          link.download = `${safeName}.${ext}`;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+          const img = new Image();
+          img.decoding = 'async';
+          img.src = objectUrl;
+
+          await new Promise<void>((resolve, reject) => {
+            img.onload = () => resolve();
+            img.onerror = () => reject(new Error('Image decode error'));
+          });
+
+          const canvas = document.createElement('canvas');
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+          const ctx = canvas.getContext('2d');
+
+          if (!ctx) throw new Error('Canvas 2D unavailable');
+
+          if (DOWNLOAD_MIME_TYPE === 'image/jpeg') {
+            ctx.fillStyle = '#071426';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+          }
+
+          ctx.drawImage(img, 0, 0);
+          URL.revokeObjectURL(objectUrl);
+
+          const convertedBlob = await new Promise<Blob | null>((resolve) =>
+            canvas.toBlob(
+              resolve,
+              DOWNLOAD_MIME_TYPE,
+              DOWNLOAD_MIME_TYPE === 'image/jpeg' ? 0.95 : undefined
+            )
+          );
+
+          if (!convertedBlob) throw new Error('Canvas toBlob failed');
+
+          const convertedUrl = URL.createObjectURL(convertedBlob);
+          triggerDownload(convertedUrl, `${safeName}.${DOWNLOAD_EXTENSION}`, true);
         } catch {
-          const ext = inferExtension(imageSrc);
-          const fallbackLink = document.createElement('a');
-          fallbackLink.href = imageSrc;
-          fallbackLink.download = `${safeName}.${ext}`;
-          document.body.appendChild(fallbackLink);
-          fallbackLink.click();
-          document.body.removeChild(fallbackLink);
+          const realExt = inferExtension(imageSrc);
+          triggerDownload(imageSrc, `${safeName}.${realExt}`, false);
         }
       });
     });
