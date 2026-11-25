@@ -336,4 +336,22 @@ export const wallpapers: Wallpaper[] = [
     image: '/wallpapers/guerrera-cosmica.webp',    
     downloadUrl: '/wallpapers/guerrera-cosmica.webp'
   },
+    {
+    id: 'cyber-guerreros',
+    title: 'Los Cyber Guerreros',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+    image: '/wallpapers/cyber-guerreros.webp',    
+    downloadUrl: '/wallpapers/cyber-guerreros.webp'
+  },
+    {
+    id: 'carnaval-colores',
+    title: 'Carnaval de Colores',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+    image: '/wallpapers/carnaval-colores.webp',    
+    downloadUrl: '/wallpapers/carnaval-colores.webp'
+  },
 ];
