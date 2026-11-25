@@ -140,7 +140,7 @@ const studioTheme = {
     >
       <div
         class:list={[
-          'max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs',
+          'max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-center gap-2.5 text-center text-xs',
           studioTheme.textSecondary,
         ]}
       >
@@ -148,17 +148,28 @@ const studioTheme = {
           <strong class={studioTheme.textPrimary} style="font-family: 'Orbitron', sans-serif;">
             VEYXARA STUDIO
           </strong>{' '}
-          · Arte digital, wallpapers y piezas visuales.
+          — © 2026 Arte digital, wallpapers y piezas visuales.
         </p>
-        <div class="flex items-center gap-5">
+
+        <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
           <a
-            href="https://www.pinterest.com/arevaloalfredo69/"
+            href="https://veyxara.com/privacidad"
             target="_blank"
             rel="noopener noreferrer"
-            class="font-semibold hover:text-[#B45309] transition-colors"
+            class="hover:text-[#B45309] transition-colors"
           >
-            Pinterest
+            Política de Privacidad
           </a>
+          <span aria-hidden="true" class="opacity-40">|</span>
+          <a
+            href="https://veyxara.com/terminos"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-[#B45309] transition-colors"
+          >
+            Términos de Servicio
+          </a>
+          <span aria-hidden="true" class="opacity-40">|</span>
           <a
             href="https://veyxara.com"
             target="_blank"

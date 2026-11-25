@@ -29,6 +29,14 @@ export const wallpapers: Wallpaper[] = [
     aspectRatio: '16:9',
     image: '/wallpapers/centauro.webp',    
     downloadUrl: '/wallpapers/centauro.webp'
+  },     {
+    id: 'horus',
+    title: 'Horus dios del cielo, personificaba la realeza divina',
+    category: 'Desktop', 
+    resolution: '3840x2160 (4K)',
+    aspectRatio: '16:9',
+    image: '/wallpapers/horus.webp',    
+    downloadUrl: '/wallpapers/horus.webp'
   },
      {
     id: 'protocolo-cibernetico',
