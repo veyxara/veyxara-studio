@@ -3,7 +3,31 @@
 import StudioLayout from '../layouts/StudioLayout.astro';
 import WallpaperCard from '../components/WallpaperCard.astro';
 import { wallpapers as wallpapersBrand } from '../data/wallpapers-brand';
-import { wallpapers as pcWallpapers } from '../data/wallpapers';
+import { wallpapers } from '../data/wallpapers';
+
+type WallpaperEntry = (typeof wallpapers)[number] & {
+  category?: string;
+  aspectRatio?: string;
+};
+
+const isMobileWallpaper = (item: WallpaperEntry): boolean => {
+  const normalizedCategory = item.category?.trim().toLowerCase();
+  if (normalizedCategory === 'mobile' || normalizedCategory === 'celular') {
+    return true;
+  }
+  if (
+    normalizedCategory === 'desktop' ||
+    normalizedCategory === 'pc' ||
+    normalizedCategory === 'escritorio'
+  ) {
+    return false;
+  }
+  return item.aspectRatio?.trim() === '9:16';
+};
+
+const allWallpapers = wallpapers as WallpaperEntry[];
+const mobileWallpapers = allWallpapers.filter(isMobileWallpaper);
+const pcWallpapers = allWallpapers.filter((item) => !isMobileWallpaper(item));
 
 const ALL_PINS_URL = 'https://co.pinterest.com/arevaloalfredo69/pins/';
 
@@ -12,10 +36,10 @@ const siteUrl = 'https://studio.veyxara.com';
 const canonicalUrl = `${siteUrl}/`;
 const seoTitle = 'Veyxara Studio | Arte Digital, Wallpapers y Colecciones Visuales';
 const seoDescription =
-  'Vitrina creativa de arte generado con IA, fondos de pantalla en alta definición para PC y colecciones visuales de Veyxara Studio.';
+  'Vitrina creativa de arte generado con IA, fondos de pantalla en alta definición para PC y celular, y colecciones visuales de Veyxara Studio.';
 const seoImage = `${siteUrl}/hero-studio.webp`;
 
-const totalPieces = wallpapersBrand.length + pcWallpapers.length;
+const totalPieces = wallpapersBrand.length + allWallpapers.length;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -139,7 +163,7 @@ const studioSectionTheme = {
 
             <p class="mt-5 max-w-xl text-base leading-relaxed text-[#E8EEF5]/90 sm:text-lg">
               Vitrina creativa de arte generado con IA, fondos de pantalla en alta
-              definición para PC y colecciones visuales de Veyxara Studio.
+              definición para PC y celular, y colecciones visuales de Veyxara Studio.
             </p>
 
             <div class="mt-8 flex flex-wrap items-center gap-3">
@@ -148,6 +172,13 @@ const studioSectionTheme = {
                 class="inline-flex items-center justify-center rounded-xl bg-[#FF9900] px-5 py-3 text-sm font-bold text-[#071426] shadow-sm transition-colors hover:bg-[#FFB03A]"
               >
                 Explorar Wallpapers PC
+              </a>
+
+              <a
+                href="#mobile-wallpapers"
+                class="inline-flex items-center justify-center rounded-xl border border-[#E8EEF5]/30 bg-[#FFFDF9] px-5 py-3 text-sm font-semibold text-[#1C1917] shadow-sm transition-colors hover:bg-[#F3E8D2]"
+              >
+                Wallpapers Celular
               </a>
             </div>
           </div>
@@ -259,7 +290,63 @@ const studioSectionTheme = {
           )}
         </section>
 
-        <!-- 3. ARCHIVO COMPLETO DE IMÁGENES (TODOS LOS PINES) -->
+        <!-- 3. FONDOS PARA CELULAR (MÓVIL) -->
+        <section
+          id="mobile-wallpapers"
+          aria-labelledby="mobile-wallpapers-heading"
+          class:list={[
+            'rounded-3xl border p-6 sm:p-8',
+            studioSectionTheme.sectionBg,
+            studioSectionTheme.sectionBorder,
+          ]}
+        >
+          <div
+            class:list={[
+              'border-b pb-4 mb-8 flex items-center justify-between gap-4',
+              studioSectionTheme.dividerBorder,
+            ]}
+          >
+            <div>
+              <h2
+                id="mobile-wallpapers-heading"
+                class:list={['text-xl sm:text-2xl font-bold', studioSectionTheme.headingInk]}
+                style="font-family: 'Orbitron', sans-serif;"
+              >
+                Fondos para Celular{' '}
+                <span class={studioSectionTheme.accentText}>(Móvil)</span>
+              </h2>
+              <p class:list={['text-xs sm:text-sm mt-1', studioSectionTheme.bodyInk]}>
+                Fondos verticales en alta definición pensados para pantalla de celular.
+              </p>
+            </div>
+            <span
+              class:list={[
+                'text-xs font-bold px-3 py-1 rounded-full border whitespace-nowrap shrink-0',
+                studioSectionTheme.pillBg,
+                studioSectionTheme.pillBorder,
+                studioSectionTheme.pillText,
+              ]}
+            >
+              {mobileWallpapers.length} piezas
+            </span>
+          </div>
+
+          {mobileWallpapers.length > 0 ? (
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {mobileWallpapers.map((wallpaper, idx) => (
+                <WallpaperCard wallpaper={wallpaper} index={2000 + idx} />
+              ))}
+            </div>
+          ) : (
+            <div class:list={['rounded-xl border p-10 text-center text-sm', studioSectionTheme.emptyCard]}>
+              Marca tus piezas verticales con{' '}
+              <code class={studioSectionTheme.accentText}>category: "Mobile"</code> en{' '}
+              <code class={studioSectionTheme.accentText}>src/data/wallpapers.ts</code> para verlas aquí.
+            </div>
+          )}
+        </section>
+
+        <!-- 4. ARCHIVO COMPLETO DE IMÁGENES (TODOS LOS PINES) -->
         <section
           id="pinterest-gallery"
           aria-labelledby="pinterest-heading"
