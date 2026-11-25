@@ -7,12 +7,11 @@ import { wallpapers as wallpapersBrand } from '../data/wallpapers-brand';
 import { wallpapers as pcWallpapers } from '../data/wallpapers';
 import { PinterestRssService } from '../services/PinterestRssService';
 
-// Solo el tablero de Veyxara Studio (sin tableros de Veyxara Core)
+// Tablero de Veyxara Studio para la selección destacada
 const PINTEREST_RSS_URLS = [
   'https://www.pinterest.com/arevaloalfredo69/veyxara-studio.rss',
 ];
 
-// Opcional: agrega aquí piezas visuales de Studio como respaldo si el RSS entrega menos de 40
 const STUDIO_PINTEREST_FALLBACK: Wallpaper[] = [];
 
 const rssService = new PinterestRssService(
@@ -28,7 +27,7 @@ const siteUrl = 'https://studio.veyxara.com';
 const canonicalUrl = `${siteUrl}/`;
 const seoTitle = 'Veyxara Studio | Arte Digital, Wallpapers y Colecciones Visuales';
 const seoDescription =
-  'Vitrina creativa de arte generado con IA, fondos de pantalla en alta definición para PC y piezas verticales sincronizadas desde el tablero de Veyxara Studio en Pinterest.';
+  'Vitrina creativa de arte generado con IA, fondos de pantalla en alta definición para PC y colecciones visuales de Veyxara Studio.';
 const seoImage = `${siteUrl}/hero-studio.webp`;
 
 const totalPieces =
@@ -156,8 +155,7 @@ const studioSectionTheme = {
 
             <p class="mt-5 max-w-xl text-base leading-relaxed text-[#E8EEF5]/90 sm:text-lg">
               Vitrina creativa de arte generado con IA, fondos de pantalla en alta
-              definición para PC y piezas verticales sincronizadas desde el tablero
-              de Veyxara Studio en Pinterest.
+              definición para PC y colecciones visuales de Veyxara Studio.
             </p>
 
             <div class="mt-8 flex flex-wrap items-center gap-3">
@@ -172,7 +170,7 @@ const studioSectionTheme = {
                 href="#pinterest-gallery"
                 class="inline-flex items-center justify-center rounded-xl border border-[#E8EEF5]/30 bg-[#FFFDF9] px-5 py-3 text-sm font-semibold text-[#1C1917] shadow-sm transition-colors hover:bg-[#F3E8D2]"
               >
-                Ver Tablero Pinterest
+                Ver Más Imágenes
               </a>
             </div>
           </div>
@@ -284,7 +282,7 @@ const studioSectionTheme = {
           )}
         </section>
 
-        <!-- 3. TABLERO DE PINTEREST DE VEYXARA STUDIO (MÁXIMO 40) -->
+        <!-- 3. GALERÍA EXTENDIDA / TODOS LOS PINES -->
         <section
           id="pinterest-gallery"
           aria-labelledby="pinterest-heading"
@@ -306,11 +304,11 @@ const studioSectionTheme = {
                 class:list={['text-xl sm:text-2xl font-bold', studioSectionTheme.headingInk]}
                 style="font-family: 'Orbitron', sans-serif;"
               >
-                Tablero Veyxara Studio{' '}
-                <span class={studioSectionTheme.accentText}>(Pinterest)</span>
+                Galería Extendida{' '}
+                <span class={studioSectionTheme.accentText}>(Todos los Pines)</span>
               </h2>
               <p class:list={['text-xs sm:text-sm mt-1', studioSectionTheme.bodyInk]}>
-                Piezas sincronizadas desde el tablero de Veyxara Studio en Pinterest (máximo 40).
+                Selección destacada en la página; explora más imágenes directamente en la sección de todos los pines.
               </p>
             </div>
             <span
@@ -321,7 +319,7 @@ const studioSectionTheme = {
                 studioSectionTheme.pillText,
               ]}
             >
-              {pinterestWallpapers.length} / 40 pines
+              {pinterestWallpapers.length} piezas
             </span>
           </div>
 
@@ -338,8 +336,8 @@ const studioSectionTheme = {
                 ))}
               </div>
 
-              {pinterestWallpapers.length > 12 && (
-                <div class="mt-10 flex justify-center">
+              <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+                {pinterestWallpapers.length > 12 && (
                   <button
                     id="load-more-pinterest-btn"
                     type="button"
@@ -349,14 +347,35 @@ const studioSectionTheme = {
                       studioSectionTheme.headingInk,
                     ]}
                   >
-                    Cargar más
+                    Cargar más aquí
                   </button>
-                </div>
-              )}
+                )}
+
+                <a
+                  href="https://co.pinterest.com/arevaloalfredo69/pins/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-[#B45309] text-sm font-bold text-[#FFFDF9] shadow-xs transition-colors hover:bg-[#92400E]"
+                >
+                  Ver más imágenes en todos los pines ↗
+                </a>
+              </div>
             </>
           ) : (
-            <div class:list={['rounded-xl border p-12 text-center text-sm', studioSectionTheme.emptyCard]}>
-              No se encontraron pines en el RSS del tablero de Veyxara Studio en este momento.
+            <div class:list={['rounded-xl border p-12 text-center text-sm space-y-4', studioSectionTheme.emptyCard]}>
+              <p>
+                Revisa el archivo completo de imágenes directamente en tu vista de todos los pines.
+              </p>
+              <div>
+                <a
+                  href="https://co.pinterest.com/arevaloalfredo69/pins/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-[#B45309] text-sm font-bold text-[#FFFDF9] shadow-xs transition-colors hover:bg-[#92400E]"
+                >
+                  Ver más imágenes en todos los pines ↗
+                </a>
+              </div>
             </div>
           )}
         </section>
