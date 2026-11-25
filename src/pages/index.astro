@@ -12,8 +12,17 @@ const PINTEREST_RSS_URLS = [
   'https://www.pinterest.com/arevaloalfredo69/veyxara-studio.rss',
 ];
 
-const rssService = new PinterestRssService(PINTEREST_RSS_URLS);
-const pinterestWallpapers: Wallpaper[] = await rssService.fetchWallpapers().catch(() => []);
+// Opcional: agrega aquí piezas visuales de Studio como respaldo si el RSS entrega menos de 40
+const STUDIO_PINTEREST_FALLBACK: Wallpaper[] = [];
+
+const rssService = new PinterestRssService(
+  PINTEREST_RSS_URLS,
+  STUDIO_PINTEREST_FALLBACK
+);
+const pinterestWallpapers: Wallpaper[] = (await rssService.fetchWallpapers().catch(() => [])).slice(
+  0,
+  40
+);
 
 // SEO para Google y Bing
 const siteUrl = 'https://studio.veyxara.com';
@@ -96,7 +105,10 @@ const studioSectionTheme = {
     <meta property="og:title" content={seoTitle} />
     <meta property="og:description" content={seoDescription} />
     <meta property="og:image" content={seoImage} />
-    <meta property="og:image:alt" content="Arte digital, wallpapers y colecciones visuales de Veyxara Studio" />
+    <meta
+      property="og:image:alt"
+      content="Arte digital, wallpapers y colecciones visuales de Veyxara Studio"
+    />
     <meta property="og:image:width" content="1920" />
     <meta property="og:image:height" content="1080" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -189,7 +201,8 @@ const studioSectionTheme = {
                   class:list={['text-xl sm:text-2xl font-bold', studioSectionTheme.headingInk]}
                   style="font-family: 'Orbitron', sans-serif;"
                 >
-                  Manejo de Marca &amp; <span class={studioSectionTheme.accentDeep}>Arte Insignia</span>
+                  Manejo de Marca &amp;{' '}
+                  <span class={studioSectionTheme.accentDeep}>Arte Insignia</span>
                 </h2>
                 <p class:list={['text-xs sm:text-sm mt-1', studioSectionTheme.bodyInk]}>
                   Piezas visuales de identidad de marca disponibles para inspección (sin descarga).
@@ -237,7 +250,8 @@ const studioSectionTheme = {
                 class:list={['text-xl sm:text-2xl font-bold', studioSectionTheme.headingInk]}
                 style="font-family: 'Orbitron', sans-serif;"
               >
-                Fondos de Escritorio <span class={studioSectionTheme.accentText}>(PC)</span>
+                Fondos de Escritorio{' '}
+                <span class={studioSectionTheme.accentText}>(PC)</span>
               </h2>
               <p class:list={['text-xs sm:text-sm mt-1', studioSectionTheme.bodyInk]}>
                 Fondos locales listos para ampliar y descargar en alta calidad.
@@ -269,7 +283,7 @@ const studioSectionTheme = {
           )}
         </section>
 
-        <!-- 3. TABLERO DE PINTEREST DE VEYXARA STUDIO -->
+        <!-- 3. TABLERO DE PINTEREST DE VEYXARA STUDIO (MÁXIMO 40) -->
         <section
           id="pinterest-gallery"
           aria-labelledby="pinterest-heading"
@@ -291,10 +305,11 @@ const studioSectionTheme = {
                 class:list={['text-xl sm:text-2xl font-bold', studioSectionTheme.headingInk]}
                 style="font-family: 'Orbitron', sans-serif;"
               >
-                Tablero Veyxara Studio <span class={studioSectionTheme.accentText}>(Pinterest)</span>
+                Tablero Veyxara Studio{' '}
+                <span class={studioSectionTheme.accentText}>(Pinterest)</span>
               </h2>
               <p class:list={['text-xs sm:text-sm mt-1', studioSectionTheme.bodyInk]}>
-                Piezas sincronizadas desde el tablero de Veyxara Studio en Pinterest.
+                Piezas sincronizadas desde el tablero de Veyxara Studio en Pinterest (máximo 40).
               </p>
             </div>
             <span
@@ -305,13 +320,16 @@ const studioSectionTheme = {
                 studioSectionTheme.pillText,
               ]}
             >
-              {pinterestWallpapers.length} pines
+              {pinterestWallpapers.length} / 40 pines
             </span>
           </div>
 
           {pinterestWallpapers.length > 0 ? (
             <>
-              <div id="pinterest-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              <div
+                id="pinterest-grid"
+                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+              >
                 {pinterestWallpapers.map((wallpaper, idx) => (
                   <div class={`pinterest-block-item ${idx >= 12 ? 'hidden' : ''}`}>
                     <WallpaperCard wallpaper={wallpaper} index={2000 + idx} />
@@ -325,9 +343,9 @@ const studioSectionTheme = {
                     id="load-more-pinterest-btn"
                     type="button"
                     class:list={[
-                      'px-6 py-2.5 rounded-xl border text-sm font-bold transition-all cursor-pointer shadow-xs hover:bg-[#B45309] hover:text-[#FFFDF9]',
+                      'px-6 py-2.5 rounded-xl border text-sm font-bold transition-all cursor-pointer shadow-xs hover:bg-[#292524] hover:text-[#FFFDF9] hover:border-[#292524]',
                       studioSectionTheme.emptyCard,
-                      studioSectionTheme.accentDeep,
+                      studioSectionTheme.inkPrimary,
                     ]}
                   >
                     Cargar más
