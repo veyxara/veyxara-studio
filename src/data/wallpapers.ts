@@ -13,6 +13,15 @@ export interface Wallpaper {
 export const wallpapers: Wallpaper[] = [
 
     {
+    id: 'el-paraiso',
+    title: 'El huerto del Edén, el Origen',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+    image: '/wallpapers/el-paraiso.webp',    
+    downloadUrl: '/wallpapers/el-paraiso.webp'
+  },
+    {
     id: 'luna-es-hueca',
     title: 'Teóricos de la conspiración creyeron que la Luna es hueca',
     category: 'Desktop', 
@@ -29,7 +38,8 @@ export const wallpapers: Wallpaper[] = [
     aspectRatio: '16:9',
     image: '/wallpapers/centauro.webp',    
     downloadUrl: '/wallpapers/centauro.webp'
-  },     {
+  },    
+   {
     id: 'horus',
     title: 'Horus dios del cielo, personificaba la realeza divina',
     category: 'Desktop', 
@@ -38,7 +48,7 @@ export const wallpapers: Wallpaper[] = [
     image: '/wallpapers/horus.webp',    
     downloadUrl: '/wallpapers/horus.webp'
   },
-     {
+   {
     id: 'protocolo-cibernetico',
     title: 'Centinela del Protocolo Cibernético',
     category: 'Desktop', 
@@ -284,9 +294,9 @@ export const wallpapers: Wallpaper[] = [
    {
     id: 'nave-veyxara',
     title: 'Nave Internacional Espacial',
-    category: 'Mobile', 
-    resolution: '1080x1920 (FHD+)',
-    aspectRatio: '9:16',
+    category: 'Desktop', 
+    resolution: '3840x2160 (4K)',
+    aspectRatio: '16:9',
     image: '/wallpapers/nave-veyxara.webp',    
     downloadUrl: '/wallpapers/nave-veyxara.webp'
   },
@@ -298,5 +308,23 @@ export const wallpapers: Wallpaper[] = [
     aspectRatio: '16:9',
     image: '/wallpapers/nave-espacial.webp',    
     downloadUrl: '/wallpapers/nave-espacial.webp'
+  },
+     {
+    id: 'guerrero-futurista',
+    title: 'El combate moderno evoluciona hacia el "guerrero digital"',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+    image: '/wallpapers/guerrero-futurista.webp',    
+    downloadUrl: '/wallpapers/guerrero-futurista.webp'
+  },
+     {
+    id: 'guerrera-cosmica',
+    title: 'Diosa guerrera cosmica by Veyxara',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+    image: '/wallpapers/guerrera-cosmica.webp',    
+    downloadUrl: '/wallpapers/guerrera-cosmica.webp'
   },
 ];
