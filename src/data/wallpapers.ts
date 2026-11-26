@@ -95,15 +95,6 @@ export const wallpapers: Wallpaper[] = [
     image: '/wallpapers/tigre-blanco.webp',    
     downloadUrl: '/wallpapers/tigre-blanco.webp'
   },
-  {
-    id: 'batalla-de-dioses',
-    title: 'Batalla de Dioses en el Olimpo',
-    category: 'Desktop', 
-    resolution: '3840x2160 (4K)',
-    aspectRatio: '16:9',
-    image: '/wallpapers/batalla-de-dioses.webp',    
-    downloadUrl: '/wallpapers/batalla-de-dioses.webp'
-  },
    {
     id: 'viaje-a-las-estrellas',
     title: 'Piloto Viajando a las estrellas',
