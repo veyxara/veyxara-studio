@@ -321,15 +321,6 @@ export const wallpapers: Wallpaper[] = [
     downloadUrl: '/wallpapers/nave-espacial.webp'
   },
      {
-    id: 'guerrero-futurista',
-    title: 'El combate moderno evoluciona hacia el "guerrero digital"',
-    category: 'Mobile', 
-    resolution: '1080x1920 (FHD+)',
-    aspectRatio: '9:16',
-    image: '/wallpapers/guerrero-futurista.webp',    
-    downloadUrl: '/wallpapers/guerrero-futurista.webp'
-  },
-     {
     id: 'guerrera-cosmica',
     title: 'Diosa guerrera cosmica by Veyxara',
     category: 'Mobile', 
@@ -385,4 +376,13 @@ export const wallpapers: Wallpaper[] = [
   image: '/wallpapers/cyborg-head.webp',
   downloadUrl: '/wallpapers/cyborg-head.webp'
 },
+     {
+    id: 'guerrero-futurista',
+    title: 'El combate moderno evoluciona hacia el "guerrero digital"',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+    image: '/wallpapers/guerrero-futurista.webp',    
+    downloadUrl: '/wallpapers/guerrero-futurista.webp'
+  },
 ];
