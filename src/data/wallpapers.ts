@@ -12,7 +12,7 @@ export interface Wallpaper {
 
 export const wallpapers: Wallpaper[] = [
 
-     {
+  {
     id: 'indio-sioux',
     title: 'Idio siux, dakotas, nakotas o lakotas',
     category: 'Desktop', 
@@ -20,14 +20,24 @@ export const wallpapers: Wallpaper[] = [
     aspectRatio: '16:9',
     image: '/wallpapers/indio-sioux.webp',    
     downloadUrl: '/wallpapers/indio-sioux.webp'
-  },
-   {
+},
+  id: 'protocolo-cibernetico',
+  title: 'Centinela del Protocolo Cibernético',
+  description: 'Guerrero blindado en entorno futurista de alta tecnología, ideal para escritorio 4K.',
+  category: 'Desktop',
+  resolution: '3840x2160 (4K)',
+  aspectRatio: '16:9',
+  image: '/wallpapers/protocolo-cibernetico.webp',
+  downloadUrl: '/wallpapers/protocolo-cibernetico.webp'
+},
+{
     id: 'el-paraiso',
     title: 'El huerto del Edén, el Origen',
-    category: 'Mobile', 
+    description: 'Paisaje exuberante de vegetación sagrada, luz dorada y atmósfera mística diseñado en formato vertical para pantalla móvil.',
+    category: 'Mobile',
     resolution: '1080x1920 (FHD+)',
     aspectRatio: '9:16',
-    image: '/wallpapers/el-paraiso.webp',    
+    image: '/wallpapers/el-paraiso.webp',
     downloadUrl: '/wallpapers/el-paraiso.webp'
   },
     {
@@ -66,16 +76,7 @@ export const wallpapers: Wallpaper[] = [
     image: '/wallpapers/horus.webp',    
     downloadUrl: '/wallpapers/horus.webp'
   },
-   {
-    id: 'protocolo-cibernetico',
-    title: 'Centinela del Protocolo Cibernético',
-    category: 'Desktop', 
-    resolution: '3840x2160 (4K)',
-    aspectRatio: '16:9',
-    image: '/wallpapers/protocolo-cibernetico.webp',    
-    downloadUrl: '/wallpapers/protocolo-cibernetico.webp'
-  },
-  {
+ {
     id: 'veyx-anubis-desktop',
     title: 'VEYX - Custodio del Núcleo Ancestral',
     category: 'Desktop', 
