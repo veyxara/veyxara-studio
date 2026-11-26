@@ -320,7 +320,7 @@ export const wallpapers: Wallpaper[] = [
     image: '/wallpapers/nave-espacial.webp',    
     downloadUrl: '/wallpapers/nave-espacial.webp'
   },
-     {
+    {
     id: 'guerrera-cosmica',
     title: 'Diosa guerrera cosmica by Veyxara',
     category: 'Mobile', 
@@ -376,7 +376,7 @@ export const wallpapers: Wallpaper[] = [
   image: '/wallpapers/cyborg-head.webp',
   downloadUrl: '/wallpapers/cyborg-head.webp'
 },
-     {
+   {
     id: 'guerrero-futurista',
     title: 'El combate moderno evoluciona hacia el "guerrero digital"',
     category: 'Mobile', 
@@ -385,4 +385,14 @@ export const wallpapers: Wallpaper[] = [
     image: '/wallpapers/guerrero-futurista.webp',    
     downloadUrl: '/wallpapers/guerrero-futurista.webp'
   },
+    {
+  id: 'grifo-arcoiris',
+  title: 'Grifo - Ser mítico · ilustraciones, imágenes clip art',
+  description: 'Grifo arcoíris en ruinas celestiales, ideal para escritorio 4K.',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+  image: '/wallpapers/grifo-arcoiris.webp',
+  downloadUrl: '/wallpapers/grifo-arcoiris.webp'
+},
 ];
