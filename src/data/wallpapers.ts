@@ -12,7 +12,7 @@ export interface Wallpaper {
 
 export const wallpapers: Wallpaper[] = [
 
-  {
+{
     id: 'indio-sioux',
     title: 'Idio siux, dakotas, nakotas o lakotas',
     category: 'Desktop', 
@@ -33,7 +33,7 @@ export const wallpapers: Wallpaper[] = [
 {
     id: 'el-paraiso',
     title: 'El huerto del Edén, el Origen',
-    description: 'Paisaje exuberante de vegetación sagrada, luz dorada y atmósfera mística diseñado en formato vertical para pantalla móvil.',
+    description: 'Guerrera de fantasía con armadura oscura y brillo cian acompañada de un leopardo de las nieves frente a un portal mágico, cascadas y un dragón en formato vertical.',
     category: 'Mobile',
     resolution: '1080x1920 (FHD+)',
     aspectRatio: '9:16',
