@@ -3,6 +3,7 @@
 export interface Wallpaper {
   id: string;
   title: string;
+  description?: string;
   category: string;
   resolution: string;
   aspectRatio: string;
@@ -64,7 +65,10 @@ const cardColors = {
 
 <article class="wallpaper-card group">
   <div
-    class="card-media-wrapper cursor-pointer preview-trigger"
+    class:list={[
+      'card-media-wrapper cursor-pointer preview-trigger',
+      { 'is-vertical': isVertical },
+    ]}
     data-modal-target={uniqueModalId}
   >
     <img
@@ -73,11 +77,7 @@ const cardColors = {
       loading="lazy"
       decoding="async"
       oncontextmenu={isBrand ? 'return false;' : undefined}
-      class={`w-full h-full transition-all duration-700 ease-out group-hover:scale-105 ${
-        isVertical
-          ? 'object-cover object-top group-hover:object-bottom'
-          : 'object-cover object-center'
-      }`}
+      class="w-full h-full object-contain object-center transition-all duration-700 ease-out group-hover:scale-105"
     />
 
     <span
@@ -143,6 +143,16 @@ const cardColors = {
       >
         {wallpaper.title}
       </h3>
+      {wallpaper.description && (
+        <p
+          class:list={[
+            'text-xs mt-1.5 leading-relaxed line-clamp-2',
+            cardColors.inkSecondary,
+          ]}
+        >
+          {wallpaper.description}
+        </p>
+      )}
     </div>
 
     <div
@@ -259,6 +269,11 @@ const cardColors = {
           <p class:list={['text-base md:text-lg font-bold', cardColors.inkPrimary]}>
             {wallpaper.title}
           </p>
+          {wallpaper.description && (
+            <p class:list={['text-xs mt-0.5', cardColors.inkSecondary]}>
+              {wallpaper.description}
+            </p>
+          )}
           <span
             class:list={[
               'text-xs font-mono font-semibold',
@@ -291,12 +306,13 @@ const cardColors = {
         ]}
       >
         <img
+          src={wallpaper.image}
           data-src={wallpaper.image}
           alt={seoImageAlt}
           loading="lazy"
           decoding="async"
           oncontextmenu={isBrand ? 'return false;' : undefined}
-          class={`modal-img max-h-[80vh] max-w-full w-auto h-auto object-contain rounded-lg shadow-md ${
+          class={`modal-img max-h-full max-w-full w-auto h-auto object-contain rounded-lg shadow-md ${
             isBrand ? 'select-none pointer-events-none' : ''
           }`}
         />
@@ -544,6 +560,9 @@ const cardColors = {
     aspect-ratio: 16 / 10;
     overflow: hidden;
     background-color: #E4C99E;
+  }
+  .card-media-wrapper.is-vertical {
+    aspect-ratio: 9 / 16;
   }
   .wallpaper-card:hover {
     border-color: rgba(180, 83, 9, 0.85);
