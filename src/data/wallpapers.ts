@@ -384,4 +384,14 @@ export const wallpapers: Wallpaper[] = [
   image: '/wallpapers/dragon-komodo.webp',
   downloadUrl: '/wallpapers/dragon-komodo.webp'
 },
+  {
+  id: 'cyborg-head',
+  title: 'Futuristic cyborg head',
+  description: 'Robot Face or futuristic cyborg head, ideal para escritorio 4K.',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+  image: '/wallpapers/cyborg-head.webp',
+  downloadUrl: '/wallpapers/cyborg-head.webp'
+},
 ];
