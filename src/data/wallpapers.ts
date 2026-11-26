@@ -375,13 +375,13 @@ export const wallpapers: Wallpaper[] = [
     downloadUrl: '/wallpapers/arte-abstracto.webp'
   },
   {
-  id: 'dragon.komodo',
+  id: 'dragon-komodo',
   title: 'Dragón de Komodo',
   description: 'Dragón de Komodo, blindado en entorno futurista de alta tecnología, ideal para escritorio 4K.',
     category: 'Mobile', 
     resolution: '1080x1920 (FHD+)',
     aspectRatio: '9:16',
-  image: '/wallpapers/dragon.komodo.webp',
-  downloadUrl: '/wallpapers/dragon.komodo.webp'
+  image: '/wallpapers/dragon-komodo.webp',
+  downloadUrl: '/wallpapers/dragon-komodo.webp'
 },
 ];
