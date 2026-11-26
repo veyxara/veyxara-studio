@@ -5,16 +5,23 @@ import tailwindcss from '@tailwindcss/vite';
 import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 
+import vercel from '@astrojs/vercel';
+
 export default defineConfig({
   site: 'https://studio.veyxara.com',
+
   build: {
     inlineStylesheets: 'always',
   },
+
   vite: {
     plugins: [tailwindcss()],
   },
+
   integrations: [
     preact(),
     sitemap(),
   ],
+
+  adapter: vercel(),
 });

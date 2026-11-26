@@ -400,6 +400,20 @@ const cardColors = {
   const DOWNLOAD_MIME_TYPE: 'image/jpeg' | 'image/png' = 'image/jpeg';
   const DOWNLOAD_EXTENSION = DOWNLOAD_MIME_TYPE === 'image/png' ? 'png' : 'jpg';
 
+  const notifyTelegramStudio = (title: string, action: string) => {
+    fetch('/api/studio-notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        title: title || 'Wallpaper Veyxara Studio',
+        action,
+        url: window.location.href,
+      }),
+    }).catch((err) => {
+      console.error('[Telegram Studio Notify]', err);
+    });
+  };
+
   const inferExtension = (url: string, mimeType?: string): string => {
     if (mimeType?.includes('webp')) return 'webp';
     if (mimeType?.includes('png')) return 'png';
@@ -451,6 +465,8 @@ const cardColors = {
         const wallpaperTitle = btn.getAttribute('data-title');
 
         if (!imageSrc) return;
+
+        notifyTelegramStudio(wallpaperTitle || 'Wallpaper', 'Descarga JPG');
 
         const safeName =
           wallpaperTitle
