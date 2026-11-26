@@ -12,6 +12,15 @@ export interface Wallpaper {
 
 export const wallpapers: Wallpaper[] = [
 
+     {
+    id: 'indio-sioux',
+    title: 'Idio siux, dakotas, nakotas o lakotas',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+    image: '/wallpapers/indio-sioux.webp',    
+    downloadUrl: '/wallpapers/indio-sioux.webp'
+  },
    {
     id: 'el-paraiso',
     title: 'El huerto del Edén, el Origen',
@@ -353,5 +362,14 @@ export const wallpapers: Wallpaper[] = [
     aspectRatio: '9:16',
     image: '/wallpapers/carnaval-colores.webp',    
     downloadUrl: '/wallpapers/carnaval-colores.webp'
+  },
+      {
+    id: 'arte-abstracto',
+    title: 'Arte Digital Abstracto de Flujos y Capas Arcoíris',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+    image: '/wallpapers/arte-abstracto.webp',    
+    downloadUrl: '/wallpapers/arte-abstracto.webp'
   },
 ];
