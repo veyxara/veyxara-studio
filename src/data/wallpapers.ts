@@ -15,9 +15,9 @@ export const wallpapers: Wallpaper[] = [
      {
     id: 'indio-sioux',
     title: 'Idio siux, dakotas, nakotas o lakotas',
-    category: 'Mobile', 
-    resolution: '1080x1920 (FHD+)',
-    aspectRatio: '9:16',
+    category: 'Desktop', 
+    resolution: '3840x2160 (4K)',
+    aspectRatio: '16:9',
     image: '/wallpapers/indio-sioux.webp',    
     downloadUrl: '/wallpapers/indio-sioux.webp'
   },
