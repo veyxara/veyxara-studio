@@ -63,6 +63,16 @@ export const wallpapers: Wallpaper[] = [
     image: '/wallpapers/ojo-cibernetico.webp',
     downloadUrl: '',
   },
+    {
+  id: 'ciberseguridad',
+  title: 'ciberseguridad en Veyxara',
+  description: 'Es proteger los ordenadores, servidores, redes y datos de los ciberataques',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+  image: '/wallpapers/ciberseguridad.webp',
+  downloadUrl: '',
+},
   {
     id: 'logo perspectiva',
     title: 'Logo perspectiva',
