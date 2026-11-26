@@ -21,6 +21,7 @@ export const wallpapers: Wallpaper[] = [
     image: '/wallpapers/indio-sioux.webp',    
     downloadUrl: '/wallpapers/indio-sioux.webp'
 },
+{
   id: 'protocolo-cibernetico',
   title: 'Centinela del Protocolo Cibernético',
   description: 'Guerrero blindado en entorno futurista de alta tecnología, ideal para escritorio 4K.',
@@ -30,7 +31,7 @@ export const wallpapers: Wallpaper[] = [
   image: '/wallpapers/protocolo-cibernetico.webp',
   downloadUrl: '/wallpapers/protocolo-cibernetico.webp'
 },
-{
+ {
     id: 'el-paraiso',
     title: 'El huerto del Edén, el Origen',
     description: 'Guerrera de fantasía con armadura oscura y brillo cian acompañada de un leopardo de las nieves frente a un portal mágico, cascadas y un dragón en formato vertical.',
@@ -373,4 +374,14 @@ export const wallpapers: Wallpaper[] = [
     image: '/wallpapers/arte-abstracto.webp',    
     downloadUrl: '/wallpapers/arte-abstracto.webp'
   },
+  {
+  id: 'dragon.komodo',
+  title: 'Dragón de Komodo',
+  description: 'Dragón de Komodo, blindado en entorno futurista de alta tecnología, ideal para escritorio 4K.',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+  image: '/wallpapers/dragon.komodo.webp',
+  downloadUrl: '/wallpapers/dragon.komodo.webp'
+},
 ];

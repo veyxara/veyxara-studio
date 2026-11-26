@@ -18,16 +18,7 @@ export const wallpapers: Wallpaper[] = [
     image: '/wallpapers/emblema-veyxara.webp',
     downloadUrl: '',
   },
-    {
-    id: 'ojo-cibernetico',
-    title: 'VEYXARA | Beyond What We See',
-    category: 'Official Asset',
-    resolution: '1080x1920 (FHD+)',
-    aspectRatio: '9:16',
-    image: '/wallpapers/ojo-cibernetico.webp',
-    downloadUrl: '',
-  },
-    {
+     {
     id: 'logo-nucleo-portal',
     title: 'Logo Portal Cubo Ci-fi',
     category: 'Official Asset',
@@ -70,6 +61,15 @@ export const wallpapers: Wallpaper[] = [
     resolution: '3840x2160 (4K)',
     aspectRatio: '16:9',
     image: '/wallpapers/logo perspectiva.webp',
+    downloadUrl: '',
+  },
+    {
+    id: 'ojo-cibernetico',
+    title: 'VEYXARA | Beyond What We See',
+    category: 'Official Asset',
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+    image: '/wallpapers/ojo-cibernetico.webp',
     downloadUrl: '',
   },
 ];
