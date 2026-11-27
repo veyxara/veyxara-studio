@@ -250,7 +250,7 @@ export const wallpapers: Wallpaper[] = [
   },
    {
     id: 'albert-einstein',
-    title: 'Albert Einstein',
+    title: 'Albert Einstein - Nobel de física',
     category: 'Desktop', 
     resolution: '3840x2160 (4K)',
     aspectRatio: '16:9',
@@ -311,15 +311,6 @@ export const wallpapers: Wallpaper[] = [
     image: '/wallpapers/nave-veyxara.webp',    
     downloadUrl: '/wallpapers/nave-veyxara.webp'
   },
-   {
-    id: 'nave-espacial',
-    title: 'Nave Espacial',
-    category: 'Desktop', 
-    resolution: '3840x2160 (4K)',
-    aspectRatio: '16:9',
-    image: '/wallpapers/nave-espacial.webp',    
-    downloadUrl: '/wallpapers/nave-espacial.webp'
-  },
     {
     id: 'guerrera-cosmica',
     title: 'Diosa guerrera cosmica by Veyxara',
@@ -356,7 +347,7 @@ export const wallpapers: Wallpaper[] = [
     image: '/wallpapers/carnaval-colores.webp',    
     downloadUrl: '/wallpapers/carnaval-colores.webp'
   },
-      {
+  {
     id: 'arte-abstracto',
     title: 'Arte Digital Abstracto de Flujos y Capas Arcoíris',
     category: 'Mobile', 
@@ -395,7 +386,7 @@ export const wallpapers: Wallpaper[] = [
   image: '/wallpapers/cyborg-head.webp',
   downloadUrl: '/wallpapers/cyborg-head.webp'
 },
-   {
+ {
     id: 'guerrero-futurista',
     title: 'El combate moderno evoluciona hacia el "guerrero digital"',
     category: 'Mobile', 
@@ -404,7 +395,7 @@ export const wallpapers: Wallpaper[] = [
     image: '/wallpapers/guerrero-futurista.webp',    
     downloadUrl: '/wallpapers/guerrero-futurista.webp'
   },
-    {
+  {
   id: 'grifo-arcoiris',
   title: 'Grifo - Ser mítico · ilustraciones, imágenes clip art',
   description: 'Grifo arcoíris en ruinas celestiales, ideal para escritorio 4K.',
@@ -424,7 +415,7 @@ export const wallpapers: Wallpaper[] = [
   image: '/wallpapers/elegant-anime.webp',
   downloadUrl: '/wallpapers/elegant-anime.webp'
 },
-    {
+  {
   id: 'indian-girl',
   title: 'American Indian Beautiful Women',
   description: 'Native American Girl, ideal para escritorio 4K.',
