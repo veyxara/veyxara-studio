@@ -329,7 +329,7 @@ export const wallpapers: Wallpaper[] = [
     image: '/wallpapers/guerrera-cosmica.webp',    
     downloadUrl: '/wallpapers/guerrera-cosmica.webp'
   },
-      {
+    {
     id: 'ia-cyborg',
     title: 'Ilustracion de Inteligencia Artificial Cyborg',
     category: 'Mobile', 
