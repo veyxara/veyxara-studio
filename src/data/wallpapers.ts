@@ -367,6 +367,16 @@ export const wallpapers: Wallpaper[] = [
   downloadUrl: '/wallpapers/dragon-komodo.webp'
 },
   {
+  id: 'vortice-cosmico',
+  title: 'vortice-cosmico',
+  description: 'Vórtice cósmico de Veyxara Studio, ideal para escritorio 4K.',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+  image: '/wallpapers/vortice-cosmico.webp',
+  downloadUrl: '/wallpapers/vortice-cosmico.webp'
+},
+  {
   id: 'cyborg-head',
   title: 'Futuristic cyborg head',
   description: 'Robot Face or futuristic cyborg head, ideal para escritorio 4K.',
@@ -394,5 +404,25 @@ export const wallpapers: Wallpaper[] = [
     aspectRatio: '9:16',
   image: '/wallpapers/grifo-arcoiris.webp',
   downloadUrl: '/wallpapers/grifo-arcoiris.webp'
+},
+  {
+  id: 'elegant-anime',
+  title: 'elegant-anime',
+  description: 'Elegant Anime Star in a Glamorous Evening Look (Manga).',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+  image: '/wallpapers/elegant-anime.webp',
+  downloadUrl: '/wallpapers/elegant-anime.webp'
+},
+    {
+  id: 'indian-girl',
+  title: 'American Indian Beautiful Women',
+  description: 'Native American Girl, ideal para escritorio 4K.',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+  image: '/wallpapers/indian-girl.webp',
+  downloadUrl: '/wallpapers/indian-girl.webp'
 },
 ];
