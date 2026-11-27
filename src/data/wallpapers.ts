@@ -249,13 +249,13 @@ export const wallpapers: Wallpaper[] = [
     downloadUrl: '/wallpapers/rey-serpiente.webp'
   },
    {
-    id: 'albert-einstein',
+    id: 'einstein',
     title: 'Albert Einstein - Nobel de física',
     category: 'Desktop', 
     resolution: '3840x2160 (4K)',
     aspectRatio: '16:9',
-    image: '/wallpapers/albert-einstein.webp',    
-    downloadUrl: '/wallpapers/albert-einstein.webp'
+    image: '/wallpapers/einstein.webp',    
+    downloadUrl: '/wallpapers/einstein.webp'
   },
    {
     id: 'charles-chaplin',
