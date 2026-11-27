@@ -329,6 +329,15 @@ export const wallpapers: Wallpaper[] = [
     image: '/wallpapers/guerrera-cosmica.webp',    
     downloadUrl: '/wallpapers/guerrera-cosmica.webp'
   },
+      {
+    id: 'ia-cyborg',
+    title: 'Ilustracion de Inteligencia Artificial Cyborg',
+    category: 'Mobile', 
+    resolution: '1080x1920 (FHD+)',
+    aspectRatio: '9:16',
+    image: '/wallpapers/ia-cyborg.webp',    
+    downloadUrl: '/wallpapers/ia-cyborg.webp'
+  },
     {
     id: 'cyber-guerreros',
     title: 'Los Cyber Guerreros',
