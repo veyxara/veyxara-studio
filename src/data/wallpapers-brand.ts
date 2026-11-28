@@ -67,7 +67,7 @@ export const wallpapers: Wallpaper[] = [
   id: 'ciberseguridad',
   title: 'ciberseguridad en Veyxara',
   description: 'Es proteger los ordenadores, servidores, redes y datos de los ciberataques',
-    category: 'Mobile', 
+    category: 'Official Asset', 
     resolution: '1080x1920 (FHD+)',
     aspectRatio: '9:16',
   image: '/wallpapers/ciberseguridad.webp',
